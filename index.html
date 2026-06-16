@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Oshi Life — 法的情報</title>
+<style>
+  :root { --ink:#2E2534; --ink2:#5F5368; --muted:#9A8FA6; --rose:#E86B8F; --violet:#8E7AE6; --bg:#FBF6F8; --line:rgba(46,37,52,.10); }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    line-height:1.75; -webkit-text-size-adjust:100%; }
+  .wrap { max-width:720px; margin:0 auto; padding:32px 20px 64px; }
+  header { text-align:center; padding:24px 0 8px; }
+  .logo { font-size:28px; font-weight:800; letter-spacing:.5px;
+    background:linear-gradient(120deg,var(--rose),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .tag { color:var(--muted); font-size:14px; margin-top:4px; }
+  .cards { display:grid; gap:14px; margin-top:28px; }
+  a.card { display:block; text-decoration:none; color:inherit; background:#fff; border:.5px solid var(--line);
+    border-radius:16px; padding:20px 22px; box-shadow:0 2px 6px rgba(0,0,0,.04); transition:transform .15s ease, box-shadow .15s ease; }
+  a.card:hover { transform:translateY(-2px); box-shadow:0 8px 18px rgba(232,107,143,.18); }
+  a.card h2 { margin:0 0 4px; font-size:18px; }
+  a.card p { margin:0; color:var(--muted); font-size:13px; }
+  footer a { color:var(--rose); text-decoration:none; font-weight:700; }
+  footer { margin-top:40px; color:var(--muted); font-size:12px; text-align:center; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">Oshi Life</div>
+      <div class="tag">推し活の予定・支出・記録をまとめて管理</div>
+    </header>
+    <nav class="cards">
+      <a class="card" href="./terms.html">
+        <h2>利用規約</h2>
+        <p>本アプリの提供条件・利用上のルール</p>
+      </a>
+      <a class="card" href="./privacy.html">
+        <h2>プライバシーポリシー</h2>
+        <p>取得する情報とその取り扱いについて</p>
+      </a>
+    </nav>
+    <footer>
+      運営者: Oshi Life<br>
+      お問い合わせフォーム: <a href="https://forms.gle/GTZoGiHJLudqfbcp8">https://forms.gle/GTZoGiHJLudqfbcp8</a><br>
+      © 2026 Oshi Life
+    </footer>
+  </div>
+</body>
+</html>
