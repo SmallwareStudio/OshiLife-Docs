@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#E86B8F">
+<link rel="icon" href="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/3a/81/24/3a81247f-9f42-a0de-8ee5-14caf707a4ec/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/100x100bb.jpg">
 <title>プライバシーポリシー — Oshi Life</title>
 <style>
   :root { --ink:#2E2534; --ink2:#5F5368; --muted:#9A8FA6; --rose:#E86B8F; --violet:#8E7AE6; --bg:#FBF6F8; --line:rgba(46,37,52,.10); }
@@ -10,8 +12,14 @@
   body { margin:0; background:var(--bg); color:var(--ink2);
     font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
     line-height:1.8; -webkit-text-size-adjust:100%; }
-  .wrap { max-width:720px; margin:0 auto; padding:28px 20px 64px; }
-  a.back { color:var(--rose); text-decoration:none; font-size:14px; font-weight:700; }
+  .wrap { max-width:720px; margin:0 auto; padding:24px 20px 64px; }
+  .topbar { position:sticky; top:0; z-index:10; background:rgba(251,246,248,.85); backdrop-filter:saturate(160%) blur(12px); -webkit-backdrop-filter:saturate(160%) blur(12px); border-bottom:1px solid var(--line); }
+  .bar { max-width:720px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .brand { display:flex; align-items:center; gap:9px; color:var(--ink); text-decoration:none; font-weight:800; font-size:15px; }
+  .brand img { width:28px; height:28px; border-radius:8px; }
+  a.back { display:inline-flex; align-items:center; gap:5px; color:var(--rose); text-decoration:none; font-size:13px; font-weight:700; padding:8px 15px; border-radius:999px; background:rgba(232,107,143,.10); transition:background .15s ease; }
+  a.back:hover { background:rgba(232,107,143,.18); }
+  a.back:focus-visible { outline:2px solid rgba(232,107,143,.6); outline-offset:2px; }
   h1 { color:var(--ink); font-size:24px; margin:18px 0 4px; }
   .updated { color:var(--muted); font-size:13px; margin-bottom:24px; }
   section { background:#fff; border:.5px solid var(--line); border-radius:16px; padding:18px 20px; margin-bottom:14px; box-shadow:0 2px 6px rgba(0,0,0,.04); }
@@ -20,11 +28,22 @@
   ul { margin:0; padding-left:1.2em; font-size:15px; }
   li { margin:2px 0; }
   footer { margin-top:28px; color:var(--muted); font-size:12px; text-align:center; }
+  .ftnav { display:flex; flex-wrap:wrap; gap:18px; justify-content:center; margin-bottom:12px; }
+  .ftnav a { color:var(--rose); text-decoration:none; font-weight:700; font-size:13px; }
+  .ftnav a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="bar">
+      <a class="brand" href="./index.html">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/3a/81/24/3a81247f-9f42-a0de-8ee5-14caf707a4ec/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/200x200bb.jpg" alt="Oshi Life アイコン">
+        <span>Oshi Life</span>
+      </a>
+      <a class="back" href="./index.html">← ホームに戻る</a>
+    </div>
+  </header>
   <div class="wrap">
-    <a class="back" href="./index.html">← 戻る</a>
     <h1>プライバシーポリシー</h1>
     <p class="updated">最終改定日: 2026年6月16日</p>
 
@@ -114,7 +133,14 @@
       <p>運営者: Oshi Life<br>お問い合わせフォーム: <a href="https://forms.gle/GTZoGiHJLudqfbcp8">https://forms.gle/GTZoGiHJLudqfbcp8</a></p>
     </section>
 
-    <footer>© 2026 Oshi Life</footer>
+    <footer>
+      <nav class="ftnav">
+        <a href="./index.html">ホーム</a>
+        <a href="./terms.html">利用規約</a>
+        <a href="https://forms.gle/GTZoGiHJLudqfbcp8">お問い合わせ</a>
+      </nav>
+      © 2026 Oshi Life
+    </footer>
   </div>
 </body>
 </html>
