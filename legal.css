@@ -1,0 +1,142 @@
+:root {
+  --ink: #2E2534;
+  --ink2: #5F5368;
+  --muted: #9A8FA6;
+  --rose: #E86B8F;
+  --violet: #8E7AE6;
+  --bg: #FBF6F8;
+  --line: rgba(46, 37, 52, .10);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink2);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Noto Sans KR", "Noto Sans SC", "Noto Sans TC", sans-serif;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: var(--rose);
+  text-decoration: none;
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 20px 64px;
+}
+
+.doc-header {
+  margin-bottom: 24px;
+}
+
+.top-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.back {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.lang-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.lang-switch a {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  border: .5px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: #fff;
+  color: var(--ink2);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.lang-switch a[aria-current="page"] {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--rose), var(--violet));
+  color: #fff;
+}
+
+h1 {
+  color: var(--ink);
+  font-size: 24px;
+  margin: 18px 0 4px;
+  line-height: 1.35;
+}
+
+.updated {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+section {
+  background: #fff;
+  border: .5px solid var(--line);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .04);
+}
+
+h2 {
+  color: var(--ink);
+  font-size: 16px;
+  margin: 0 0 8px;
+  line-height: 1.55;
+}
+
+p {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  margin: 0;
+  padding-left: 1.2em;
+  font-size: 15px;
+}
+
+li {
+  margin: 2px 0;
+}
+
+footer {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .top-row {
+    align-items: flex-start;
+  }
+
+  .lang-switch {
+    justify-content: flex-start;
+  }
+}
