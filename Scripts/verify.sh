@@ -19,4 +19,9 @@ echo "== フェーズ3: 5言語 × 390px・1280px の描画（撮った画像は
 # shellcheck disable=SC2046
 node --test --test-concurrency=1 $(collect_tests tests/render)
 
+if [[ "${VERIFY_NETWORK:-0}" == "1" ]]; then
+  echo "== フェーズ4: 外部リンク"
+  node tests/network/check-links.mjs
+fi
+
 echo "verify: 必須のフェーズはすべて通過"
