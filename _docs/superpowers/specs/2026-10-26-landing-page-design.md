@@ -51,7 +51,7 @@
 
 | # | id | 節 | 中身 |
 |---|---|---|---|
-| 1 | （header） | ヘッダー | ワードマーク・言語の切り替え・短い App Store のボタン |
+| 1 | （header） | ヘッダー | ワードマーク・言語の切り替え・短い App Store の文字のボタン |
 | 2 | `top` | ヒーロー | 見出し・説明・Apple 公式のバッジ・注記「撮って記録は Free で月3回、Premium は回数の制限なし」・対応端末と価格の形（iPhone・iOS 17.0 以降・無料・アプリ内課金あり）・**動画1** |
 | 3 | `snap` | 撮って記録 | レシートは品目ごとにグッズと支出に、チケットは予定を保存したあとにチケット代も。写真から選べる。読み取りは端末の中。記録シートの画面 |
 | 4 | `color` | 推しの色とダークモード | 暗い地。**動画2**と要点のカード2枚（推しごとに色が変わる・ダークモード） |
@@ -61,7 +61,7 @@
 | 8 | `more` | そのほか | ウィジェット（「推し」は無料、ほか2つは Premium）・ライブ当日のロック画面のカウントダウン・参戦のしおり・Siri とショートカット・ログインは任意・アプリロック |
 | 9 | `plans` | Free と Premium | Free は上限の表。Premium はできることの一覧と「月額・年額。価格は App Store で」 |
 | 10 | `faq` | よくある質問 | 5問（下） |
-| 11 | `start` | 最後の CTA | 「次の当落発表の前に入れておく」方向の締め（文は新しく書く）・バッジ |
+| 11 | `start` | 最後の CTA | 「次の申込から記録してみる」方向の締め（文は新しく書く）・App Store の文字のボタン |
 | 12 | （footer） | フッター | 5言語・利用規約・プライバシーポリシー・お問い合わせ・© 2026 Shoya Matsubara |
 
 よくある質問（`<details>`。1問目は開いておく）:
@@ -256,8 +256,11 @@ _config.yml                 公開から外すもの（CLAUDE.md・Scripts/・te
 - 画面の画像は各言語のアプリの素の画面。画面の中の見本のデータ（予定名など）は、どの言語でも日本語のまま写る（App Store と同じ扱い）。
 - `<html lang>`: `ja` `en` `ko` `zh-Hans` `zh-Hant`。`hreflang` は5言語＋`x-default`（日本語）を絶対 URL で、5ページが互いを指す。`canonical` は自分。
 - App Store のリンク: 日本語は `https://apps.apple.com/jp/app/oshi-life/id6780718555`、ほかは国を指定しない `https://apps.apple.com/app/id6780718555`。
-- バッジは Apple の公式のもの（各言語版を Apple の配布元から取る。自分で訳したり作ったりしない）。2026-10-26 に配布元（tools.applemarketingtools.com）へこの Mac から
-  名前解決できなかった。実装のときに再び試し、だめならユーザーにダウンロードを頼む。
+- バッジは Apple の公式のもの（自分で訳したり作ったりしない）。5言語の黒のバッジを App Store Marketing Tools
+  （`https://toolbox.marketingtools.apple.com/api/badges/download-on-the-app-store/black/<ja-jp|en-us|ko-kr|zh-cn|zh-tw>?size=250x83`）から取る
+  （2026-10-26 に5言語とも SVG で返ることを確かめた。旧配布元の tools.applemarketingtools.com は名前が引けない）。
+- Apple の決まりにより、バッジは1つのレイアウトに1つだけ（ヒーローに置く）。ヘッダーと最後の CTA は文字のボタンにする。
+  高さは画面上で 40px 以上、まわりにバッジの高さの 1/4 の余白を空け、変形・動き・™ などの付け足しをしない。
 - OG 画像は言語ごとに、`_src/` の HTML のひな形から Playwright で描く（見出し・ワードマーク・ホームの画面）。
 
 ## 12. 検証（`Scripts/verify.sh`）
