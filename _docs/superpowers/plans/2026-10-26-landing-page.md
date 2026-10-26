@@ -1,6 +1,7 @@
 # Oshi Life の LP（2.0）実装計画
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans (recommended) or superpowers:subagent-driven-development to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> 実装はメインの Opus のセッションが直接行う（ユーザーの決まり「実装は委譲しない」）。サブエージェントを使うのは、訳の点検（Task 10 Step 5）のような読むだけの作業に限る。
 
 **Goal:** OshiLife-Docs の GitHub Pages に、5言語の新しい LP（アプリ 2.0 の内容）を、ひな形と言語ごとの文から生成して置く。
 
@@ -2137,6 +2138,8 @@ Expected: 終了コード 0
 git add _src/build.mjs assets/site.css assets/site.js index.html tests/site/html-text.mjs tests/site/pages.test.mjs Scripts/verify.sh
 git commit -m "feat: 日本語の LP を生成して、旧 LP の index.html を置き換える
 
+旧 LP は main に残っている（公開中のサイトは main のまま変わらない）。
+
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ```
 
@@ -2337,6 +2340,8 @@ Run: `node --test tests/render/pages.test.mjs`
 Expected: 2 tests が実行される（結果は PASS でも FAIL でもよい。検査が動き、`_tmp/shots/ja-mobile-fold.png` ができること）。
 
 - [ ] **Step 3: site.css の全体を書く**
+
+`.media-slot` の縦横比（下の `aspect-ratio: 1 / 1`）は、ユーザーから Motion の書き出しの比率を聞いたら、その比率に合わせる（聞く前は 1:1）。
 
 `assets/site.css` を次の内容にする:
 
@@ -3811,7 +3816,7 @@ Expected: 0 tests（訳の文がまだ無い）。PASS 扱いで終わる。
 - 画面の呼び名は `_src/i18n/glossary.json` の訳を使う（`isStrict` の語は必ず。ほかの語も、文として自然な範囲でそろえる）。「推し」は英語で `oshi`（タブ名は `Oshi`）、韓国語で `최애`、中国語で `本命`。
 - 事実は設計書 6 節の範囲だけ。日本語の文より強く言わない（「書かないこと」の言い回しの訳も持ち込まない。例: 「all features for free」）。
 - 直訳にしない。その言語の読み手が LP として自然に読める文にする。見出しの改行（`\n`）は、その言語で自然な位置に置くか、無くす。
-- `meta.title` は 60 文字ほどまで。`nav.appStoreBadgeAlt` は、その言語の Apple のバッジの文言（en「Download on the App Store」、ko「App Store에서 다운로드하기」、zh-Hans「在 App Store 下载」、zh-Hant「在 App Store 下載」）。
+- `meta.title` は 60 文字ほどまで。`nav.appStoreBadgeAlt` は、その言語のバッジの画像に描かれている文字をそのまま書く（`assets/badges/<言語>.svg` を PNG にして Read で開いて確かめる。例: `sips -s format png assets/badges/ko.svg --out _tmp/badge-ko.png`。Apple の文言を変えない）。
 - `footer.copyright` は全言語で `© {copyrightYear} Shoya Matsubara`。
 - 言語の切り替えの表示名（日本語・English など）は `locales.mjs` が持つので、文には入れない。
 
@@ -4162,6 +4167,8 @@ Run: `node --test tests/site/video.test.mjs tests/render/real-video.test.mjs && 
 Expected: PASS（video 3 tests・real-video 1 test）、verify の終了コード 0。
 
 フェーズ3（`tests/render/pages.test.mjs`）が、Playwright の Chromium で H.264 を読めないことによる `console.error` や読み込みの失敗で落ちたときは、`chromium.launch()` を `chromium.launch({ channel: 'chrome' })` に替える（このリポジトリの検証は Google Chrome の入ったこの Mac で行う）。
+
+動画が入ると描画の検査が見る形が変わるので、`tests/render/pages.test.mjs` の `reducedMotion: 'reduce'` を一時的に `'no-preference'` にして一度流し、はみ出しとコントラストに問題が無いことを確かめてから戻す（戻し忘れないよう、流したあとに `git diff tests/render` が空であることを見る）。
 
 Google Chrome で `index.html` を開き、動画の地の色がページの地と継ぎ目なくつながっていること、ループの継ぎ目、一時停止のボタンの位置を目で見る。継ぎ目が見えるときは、ユーザーに付録 A の「背景の色」の指定どおりに書き出し直してもらう。
 
