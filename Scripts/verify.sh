@@ -8,6 +8,9 @@ collect_tests() {
   find "$@" -name '*.test.mjs' -type f 2>/dev/null | sort
 }
 
+echo "== フェーズ1: 生成した HTML が _src と一致しているか"
+node _src/build.mjs --check
+
 echo "== フェーズ2: 静的検査と単体テスト"
 # shellcheck disable=SC2046
 node --test $(collect_tests tests/unit tests/site tests/i18n)

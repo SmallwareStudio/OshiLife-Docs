@@ -1,0 +1,11 @@
+/* Oshi Life の LP の見た目。全体は Task 7 で書く。 */
+:root {
+  --color-screen: #FBF6F8;
+  --color-text: #2E2534;
+}
+
+body {
+  margin: 0;
+  background: var(--color-screen);
+  color: var(--color-text);
+}

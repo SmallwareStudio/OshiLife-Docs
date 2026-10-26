@@ -1,1578 +1,232 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="index,follow">
-<meta name="theme-color" content="#F8F7FB">
-<meta name="description" content="Oshi Lifeは、推し活の予定・支出・グッズ・レポートをまとめて管理できるiPhoneアプリです。">
-<meta property="og:title" content="Oshi Life - 推し活の予定・支出・グッズをまとめて管理">
-<meta property="og:description" content="ライブ、発売日、支払い、グッズ、思い出メモまで。推し活を一冊にまとめるiPhoneアプリ。">
+<title>Oshi Life｜推し活の予定・当落・お金を記録する iPhone アプリ</title>
+<meta name="description" content="チケットやレシートを撮ると、予定・支出・グッズの下書きができる iPhone アプリ。抽選の締切や当落発表、推しに使ったお金をまとめて記録できます。">
+<link rel="canonical" href="https://smallwarestudio.github.io/OshiLife-Docs/">
+<link rel="alternate" hreflang="ja" href="https://smallwarestudio.github.io/OshiLife-Docs/">
+<link rel="alternate" hreflang="x-default" href="https://smallwarestudio.github.io/OshiLife-Docs/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/3a/81/24/3a81247f-9f42-a0de-8ee5-14caf707a4ec/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/1200x630wa.png">
-<title>Oshi Life - 推し活の予定・支出・グッズをまとめて管理</title>
-<link rel="preconnect" href="https://is1-ssl.mzstatic.com">
-<style>
-  :root {
-    --ink: #271F2F;
-    --text: #473B52;
-    --muted: #716579;
-    --line: rgba(39, 31, 47, .12);
-    --rose: #E86B8F;
-    --plum: #6E55A8;
-    --mint: #54BFA6;
-    --blue: #4D78D8;
-    --amber: #F4A24F;
-    --paper: #FFFBFD;
-    --panel: #FFFFFF;
-    --soft: #F8F7FB;
-    --shadow: 0 20px 60px rgba(54, 37, 70, .14);
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    color: var(--ink);
-    background: var(--paper);
-    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Noto Sans KR", "Noto Sans SC", "Noto Sans TC", sans-serif;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  body::selection {
-    background: rgba(232, 107, 143, .22);
-  }
-
-  a {
-    color: inherit;
-  }
-
-  img {
-    display: block;
-    max-width: 100%;
-  }
-
-  .site-header {
-    position: fixed;
-    z-index: 20;
-    top: 14px;
-    left: 14px;
-    right: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 10px 12px;
-    border: 1px solid rgba(255, 255, 255, .82);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .84);
-    box-shadow: 0 10px 32px rgba(39, 31, 47, .10);
-    backdrop-filter: blur(18px);
-  }
-
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 0;
-    text-decoration: none;
-    font-weight: 800;
-  }
-
-  .brand img {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-  }
-
-  .brand span {
-    white-space: nowrap;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .nav-links a {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    border-radius: 999px;
-    padding: 0 14px;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 700;
-    transition: background .2s ease, color .2s ease;
-  }
-
-  .nav-links a:hover,
-  .nav-links a:focus-visible {
-    color: var(--ink);
-    background: rgba(232, 107, 143, .11);
-  }
-
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-width: 0;
-  }
-
-  .language-select {
-    min-height: 44px;
-    max-width: 128px;
-    border: 1px solid rgba(39, 31, 47, .12);
-    border-radius: 999px;
-    padding: 0 12px;
-    color: var(--ink);
-    background: rgba(255, 255, 255, .74);
-    font: inherit;
-    font-size: 13px;
-    font-weight: 800;
-    cursor: pointer;
-  }
-
-  .language-select:hover,
-  .language-select:focus-visible {
-    background: rgba(232, 107, 143, .10);
-  }
-
-  .hero {
-    position: relative;
-    min-height: min(760px, 84svh);
-    overflow: hidden;
-    padding: 118px 20px 58px;
-    isolation: isolate;
-    background:
-      radial-gradient(circle at 16% 16%, rgba(232, 107, 143, .24), transparent 30%),
-      radial-gradient(circle at 88% 26%, rgba(84, 191, 166, .24), transparent 32%),
-      linear-gradient(135deg, #FFF8FB 0%, #F6F6FF 50%, #F7FFFC 100%);
-  }
-
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0;
-    height: 28%;
-    z-index: -1;
-    background: linear-gradient(180deg, rgba(255, 251, 253, 0), var(--paper));
-  }
-
-  .hero-inner,
-  .section-inner {
-    max-width: 1120px;
-    margin: 0 auto;
-  }
-
-  .hero-inner {
-    position: relative;
-    min-height: 540px;
-    display: flex;
-    align-items: center;
-  }
-
-  .hero-copy {
-    position: relative;
-    z-index: 2;
-    max-width: 660px;
-    padding-top: 18px;
-  }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 16px;
-    color: var(--plum);
-    font-size: 13px;
-    font-weight: 800;
-  }
-
-  .eyebrow::before {
-    content: "";
-    width: 28px;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--rose);
-  }
-
-  h1 {
-    max-width: 11em;
-    margin: 0;
-    color: var(--ink);
-    font-size: clamp(44px, 8vw, 92px);
-    line-height: 1.04;
-    letter-spacing: 0;
-    font-weight: 900;
-  }
-
-  .lead {
-    max-width: 620px;
-    margin: 22px 0 0;
-    color: var(--text);
-    font-size: clamp(17px, 2.4vw, 22px);
-    font-weight: 600;
-    line-height: 1.8;
-  }
-
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-    margin-top: 30px;
-  }
-
-  .button {
-    min-height: 48px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border: 1px solid transparent;
-    border-radius: 999px;
-    padding: 12px 18px;
-    text-decoration: none;
-    font-weight: 800;
-    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
-    cursor: pointer;
-  }
-
-  .button svg {
-    width: 18px;
-    height: 18px;
-    flex: 0 0 auto;
-  }
-
-  .button-primary {
-    color: #fff;
-    background: var(--ink);
-    box-shadow: 0 12px 30px rgba(39, 31, 47, .22);
-  }
-
-  .button-secondary {
-    color: var(--ink);
-    background: rgba(255, 255, 255, .82);
-    border-color: rgba(39, 31, 47, .12);
-  }
-
-  .button:hover,
-  .button:focus-visible {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 38px rgba(39, 31, 47, .18);
-  }
-
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 26px 0 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .hero-meta li {
-    min-height: 34px;
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 12px;
-    border: 1px solid rgba(39, 31, 47, .10);
-    border-radius: 999px;
-    color: var(--muted);
-    background: rgba(255, 255, 255, .66);
-    font-size: 13px;
-    font-weight: 800;
-  }
-
-  .hero-art {
-    position: absolute;
-    z-index: 1;
-    inset: 38px -20px 0 auto;
-    width: min(54vw, 600px);
-    min-width: 480px;
-    pointer-events: none;
-  }
-
-  .phone-stack {
-    position: relative;
-    height: 550px;
-  }
-
-  .phone {
-    position: absolute;
-    overflow: hidden;
-    border: 10px solid #1F1B24;
-    border-radius: 36px;
-    background: #1F1B24;
-    box-shadow: var(--shadow);
-  }
-
-  .phone img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 24px;
-  }
-
-  .phone-main {
-    right: 120px;
-    top: 26px;
-    width: 250px;
-    height: 542px;
-    transform: rotate(-4deg);
-  }
-
-  .phone-side {
-    right: 0;
-    top: 86px;
-    width: 205px;
-    height: 444px;
-    opacity: .95;
-    transform: rotate(8deg);
-  }
-
-  .floating-app-icon {
-    position: absolute;
-    right: 380px;
-    top: 8px;
-    width: 92px;
-    height: 92px;
-    padding: 6px;
-    border: 1px solid rgba(255, 255, 255, .82);
-    border-radius: 24px;
-    background: rgba(255, 255, 255, .72);
-    box-shadow: 0 18px 48px rgba(232, 107, 143, .24);
-  }
-
-  .floating-app-icon img {
-    border-radius: 18px;
-  }
-
-  section {
-    padding: 72px 20px;
-  }
-
-  .section-kicker {
-    margin: 0 0 10px;
-    color: var(--rose);
-    font-size: 13px;
-    font-weight: 900;
-  }
-
-  h2 {
-    margin: 0;
-    color: var(--ink);
-    font-size: clamp(30px, 4.8vw, 54px);
-    line-height: 1.16;
-    letter-spacing: 0;
-  }
-
-  .section-lead {
-    max-width: 720px;
-    margin: 18px 0 0;
-    color: var(--muted);
-    font-size: 17px;
-    font-weight: 600;
-  }
-
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 34px;
-  }
-
-  .feature-card {
-    min-height: 230px;
-    padding: 22px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--panel);
-    box-shadow: 0 12px 36px rgba(39, 31, 47, .06);
-  }
-
-  .feature-icon {
-    width: 42px;
-    height: 42px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    color: var(--ink);
-    background: #F7EEF8;
-  }
-
-  .feature-icon svg {
-    width: 23px;
-    height: 23px;
-    stroke-width: 2;
-  }
-
-  .feature-card:nth-child(2) .feature-icon { background: #EBF6FF; }
-  .feature-card:nth-child(3) .feature-icon { background: #FFF3E4; }
-  .feature-card:nth-child(4) .feature-icon { background: #EAF8F4; }
-  .feature-card:nth-child(5) .feature-icon { background: #F1F0FF; }
-  .feature-card:nth-child(6) .feature-icon { background: #FDF0F3; }
-
-  .feature-card h3 {
-    margin: 18px 0 8px;
-    color: var(--ink);
-    font-size: 19px;
-    line-height: 1.45;
-  }
-
-  .feature-card p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 15px;
-  }
-
-  .flow {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .92)),
-      linear-gradient(135deg, rgba(77, 120, 216, .12), rgba(84, 191, 166, .12));
-  }
-
-  .flow-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    margin-top: 34px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--line);
-  }
-
-  .flow-item {
-    min-height: 180px;
-    padding: 22px;
-    background: rgba(255, 255, 255, .84);
-  }
-
-  .flow-number {
-    color: var(--blue);
-    font-size: 13px;
-    font-weight: 900;
-  }
-
-  .flow-item h3 {
-    margin: 14px 0 8px;
-    font-size: 18px;
-    line-height: 1.45;
-  }
-
-  .flow-item p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  .screenshots {
-    overflow: hidden;
-  }
-
-  .screenshot-strip {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: clamp(220px, 24vw, 300px);
-    gap: 18px;
-    margin-top: 36px;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    padding: 4px 2px 18px;
-    scroll-snap-type: x mandatory;
-    scrollbar-color: rgba(39, 31, 47, .28) transparent;
-  }
-
-  .screenshot {
-    overflow: hidden;
-    border: 8px solid #1F1B24;
-    border-radius: 32px;
-    background: #1F1B24;
-    box-shadow: 0 16px 42px rgba(39, 31, 47, .14);
-    scroll-snap-align: start;
-  }
-
-  .screenshot img {
-    width: 100%;
-    height: auto;
-    border-radius: 22px;
-  }
-
-  .plans {
-    background: #F7FBFA;
-  }
-
-  .plan-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 34px;
-  }
-
-  .plan {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 24px;
-    background: var(--panel);
-    box-shadow: 0 12px 36px rgba(39, 31, 47, .06);
-  }
-
-  .plan strong {
-    display: block;
-    color: var(--ink);
-    font-size: 21px;
-  }
-
-  .plan p {
-    margin: 8px 0 0;
-    color: var(--muted);
-  }
-
-  .plan ul {
-    display: grid;
-    gap: 10px;
-    margin: 20px 0 0;
-    padding: 0;
-    list-style: none;
-    color: var(--text);
-    font-weight: 700;
-  }
-
-  .plan li {
-    display: flex;
-    gap: 10px;
-  }
-
-  .plan li::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    flex: 0 0 auto;
-    margin-top: 10px;
-    border-radius: 50%;
-    background: var(--mint);
-  }
-
-  .final-cta {
-    position: relative;
-    overflow: hidden;
-    color: #fff;
-    background:
-      linear-gradient(135deg, rgba(39, 31, 47, .90), rgba(70, 52, 95, .84)),
-      url("https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d0/88/35/d08835bd-569e-2538-d605-c5c9acfba878/01_home.png/600x1300bb.webp") center 20% / cover;
-  }
-
-  .final-cta::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(39, 31, 47, .92), rgba(39, 31, 47, .42));
-  }
-
-  .final-cta .section-inner {
-    position: relative;
-    z-index: 1;
-  }
-
-  .final-cta h2,
-  .final-cta .section-lead {
-    color: #fff;
-  }
-
-  .final-cta .section-lead {
-    opacity: .86;
-  }
-
-  .final-cta .button-primary {
-    color: var(--ink);
-    background: #fff;
-  }
-
-  footer {
-    padding: 34px 20px 48px;
-    color: var(--muted);
-    background: #fff;
-    border-top: 1px solid var(--line);
-  }
-
-  .footer-inner {
-    max-width: 1120px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    margin: 0 auto;
-  }
-
-  .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-  }
-
-  .footer-links a {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  .footer-links a:hover,
-  .footer-links a:focus-visible {
-    color: var(--rose);
-  }
-
-  :focus-visible {
-    outline: 3px solid rgba(77, 120, 216, .42);
-    outline-offset: 3px;
-  }
-
-  @media (max-width: 980px) {
-    .nav-links a:not(.nav-cta) {
-      display: none;
-    }
-
-    .hero {
-      min-height: auto;
-      padding-bottom: 48px;
-    }
-
-    .hero-inner {
-      min-height: 0;
-      display: block;
-    }
-
-    .hero-copy {
-      max-width: 720px;
-    }
-
-    .hero-art {
-      position: relative;
-      inset: auto;
-      width: min(100%, 620px);
-      min-width: 0;
-      margin: 38px auto 0;
-    }
-
-    .phone-stack {
-      height: 440px;
-    }
-
-    .phone-main {
-      right: 42%;
-      top: 0;
-      width: 205px;
-      height: 444px;
-    }
-
-    .phone-side {
-      right: 18%;
-      top: 52px;
-      width: 175px;
-      height: 379px;
-    }
-
-    .floating-app-icon {
-      right: auto;
-      left: 16%;
-      top: 14px;
-      width: 78px;
-      height: 78px;
-    }
-
-    .feature-grid,
-    .flow-list,
-    .plan-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .screenshot-strip {
-      grid-auto-columns: 220px;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .site-header {
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      padding: 8px 10px;
-    }
-
-    .brand span {
-      max-width: 118px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .nav-links .nav-cta {
-      padding: 0 12px;
-      font-size: 13px;
-    }
-
-    .header-actions {
-      gap: 6px;
-    }
-
-    .language-select {
-      max-width: 86px;
-      padding: 0 8px;
-      font-size: 12px;
-    }
-
-    .hero {
-      padding: 104px 18px 42px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 13vw, 58px);
-    }
-
-    .lead {
-      font-size: 16px;
-    }
-
-    .button {
-      width: 100%;
-      min-height: 52px;
-    }
-
-    .hero-meta li {
-      font-size: 12px;
-    }
-
-    .phone-stack {
-      height: 390px;
-    }
-
-    .phone-main {
-      right: 38%;
-      width: 178px;
-      height: 386px;
-      border-width: 8px;
-      border-radius: 30px;
-    }
-
-    .phone-side {
-      right: 2%;
-      width: 154px;
-      height: 334px;
-      border-width: 8px;
-      border-radius: 28px;
-    }
-
-    .floating-app-icon {
-      left: 3%;
-      width: 66px;
-      height: 66px;
-      border-radius: 18px;
-    }
-
-    section {
-      padding: 56px 18px;
-    }
-
-    .feature-grid,
-    .flow-list,
-    .plan-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .flow-list {
-      gap: 0;
-    }
-
-    .screenshot-strip {
-      grid-auto-columns: 78vw;
-    }
-
-    .footer-inner {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      scroll-behavior: auto !important;
-      transition-duration: .01ms !important;
-      animation-duration: .01ms !important;
-      animation-iteration-count: 1 !important;
-    }
-  }
-</style>
+<meta property="og:site_name" content="Oshi Life">
+<meta property="og:title" content="撮ったら、下書きまでできてる。｜Oshi Life">
+<meta property="og:description" content="チケットやレシートを撮ると、予定・支出・グッズの下書きができる iPhone アプリ。抽選の締切や当落発表、推しに使ったお金をまとめて記録できます。">
+<meta property="og:url" content="https://smallwarestudio.github.io/OshiLife-Docs/">
+<meta property="og:image" content="https://smallwarestudio.github.io/OshiLife-Docs/assets/og/ja.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Oshi Life のロゴと、アプリのホーム画面">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FBF6F8">
+<link rel="icon" type="image/png" href="assets/img/common/app-icon.png">
+<link rel="apple-touch-icon" href="assets/img/common/app-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
 </head>
 <body>
-  <header class="site-header" aria-label="サイトヘッダー" data-i18n-aria="siteHeaderLabel">
-    <a class="brand" href="#top" aria-label="Oshi Life トップへ" data-i18n-aria="brandLabel">
-      <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/3a/81/24/3a81247f-9f42-a0de-8ee5-14caf707a4ec/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/100x100bb.jpg" alt="" width="34" height="34">
-      <span>Oshi Life</span>
-    </a>
-    <div class="header-actions">
-      <nav class="nav-links" aria-label="ページ内ナビゲーション" data-i18n-aria="pageNavLabel">
-        <a href="#features" data-i18n="navFeatures">機能</a>
-        <a href="#screenshots" data-i18n="navScreenshots">画面</a>
-        <a href="#premium" data-i18n="navPremium">Premium</a>
-        <a class="nav-cta" href="https://apps.apple.com/jp/app/oshi-life/id6780718555" data-i18n="navGet">入手</a>
-      </nav>
-      <select class="language-select" id="language-select" aria-label="言語を選択" data-i18n-aria="languageSelectLabel">
-        <option value="ja">日本語</option>
-        <option value="en">English</option>
-        <option value="ko">한국어</option>
-        <option value="zh-Hans">简体中文</option>
-        <option value="zh-Hant">繁體中文</option>
-      </select>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow" data-i18n="heroEyebrow">iPhone向け推し活管理アプリ</p>
-          <h1 id="hero-title" data-i18n="heroTitle">推し活、ぜんぶこの一冊に。</h1>
-          <p class="lead" data-i18n="heroLead">ライブや発売日の予定、チケットやグッズの支出、思い出レポートまで。複数のメモや家計簿を行き来せず、Oshi Lifeだけで今日やることが分かります。</p>
-          <div class="hero-actions" aria-label="主要アクション" data-i18n-aria="mainActionsLabel">
-            <a class="button button-primary" href="https://apps.apple.com/jp/app/oshi-life/id6780718555">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.53 2.01c.12 1.02-.3 2.03-.88 2.77-.63.8-1.72 1.42-2.73 1.34-.14-.98.35-2.05.91-2.74.65-.79 1.79-1.36 2.7-1.37Zm3.5 16.57c-.53 1.22-.79 1.76-1.47 2.84-.96 1.48-2.31 3.33-3.99 3.35-1.49.01-1.87-.97-3.89-.96-2.02.01-2.45.98-3.94.97-1.68-.02-2.96-1.68-3.92-3.16-2.68-4.12-2.96-8.96-1.3-11.53 1.18-1.82 3.04-2.89 4.79-2.89 1.78 0 2.9.98 4.37.98 1.43 0 2.3-.98 4.36-.98 1.56 0 3.21.85 4.38 2.31-3.85 2.11-3.22 7.61.61 9.07Z"/></svg>
-              <span data-i18n="appStore">App Storeで見る</span>
-            </a>
-            <a class="button button-secondary" href="#screenshots" data-i18n="viewScreenshots">画面を見る</a>
-          </div>
-          <ul class="hero-meta" aria-label="アプリ情報" data-i18n-aria="appInfoLabel">
-            <li data-i18n="metaFree">無料・アプリ内購入</li>
-            <li data-i18n="metaIos">iOS 17.0以降</li>
-            <li data-i18n="metaLifestyle">ライフスタイル</li>
-            <li data-i18n="metaAge">4歳以上</li>
-          </ul>
-        </div>
-
-        <div class="hero-art" aria-hidden="true">
-          <div class="phone-stack">
-            <div class="floating-app-icon">
-              <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/3a/81/24/3a81247f-9f42-a0de-8ee5-14caf707a4ec/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/200x200bb.jpg" alt="">
-            </div>
-            <figure class="phone phone-main">
-              <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d0/88/35/d08835bd-569e-2538-d605-c5c9acfba878/01_home.png/600x1300bb.webp" alt="">
-            </figure>
-            <figure class="phone phone-side">
-              <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/95/c0/bc/95c0bcee-68b8-af94-2d8d-ce635a23580e/02_calendar.png/600x1300bb.webp" alt="">
-            </figure>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="features" aria-labelledby="features-title">
-      <div class="section-inner">
-        <p class="section-kicker" data-i18n="featuresKicker">Features</p>
-        <h2 id="features-title" data-i18n="featuresTitle">推しごとの予定から、使った金額まで。</h2>
-        <p class="section-lead" data-i18n="featuresLead">登録した推しごとに、予定・支出・グッズ・レポートを整理。次のイベントや支払い期限を見逃しにくくします。</p>
-
-        <div class="feature-grid">
-          <article class="feature-card">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
-            </span>
-            <h3 data-i18n="featureCalendarTitle">予定をカレンダーで一望</h3>
-            <p data-i18n="featureCalendarBody">ライブ、発売、配信、当落発表、支払期限など、推し活ならではの予定をまとめて確認できます。</p>
-          </article>
-
-          <article class="feature-card">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16v10H4z"/><path d="M4 10h16M8 15h4"/></svg>
-            </span>
-            <h3 data-i18n="featureExpenseTitle">支出をかんたん記録</h3>
-            <p data-i18n="featureExpenseBody">チケット、グッズ、交通費、宿泊、サブスクまで。推しにいくら使ったかを見える化します。</p>
-          </article>
-
-          <article class="feature-card">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
-            </span>
-            <h3 data-i18n="featureGoodsTitle">グッズと思い出を保存</h3>
-            <p data-i18n="featureGoodsBody">集めたグッズやイベントの感想メモを残して、あとから振り返りやすく整理できます。</p>
-          </article>
-
-          <article class="feature-card">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/></svg>
-            </span>
-            <h3 data-i18n="featureNotificationTitle">通知で大事な瞬間を逃さない</h3>
-            <p data-i18n="featureNotificationBody">締切前やイベント前にリマインド。申し込み、支払い、当落発表を落ち着いて追えます。</p>
-          </article>
-
-          <article class="feature-card">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="8" cy="8" r="3"/><path d="M14 20a6 6 0 0 0-12 0"/><path d="M17 11a3 3 0 1 0 0-6"/><path d="M22 20a6 6 0 0 0-5-5.9"/></svg>
-            </span>
-            <h3 data-i18n="featureOshiTitle">複数の推しを整理</h3>
-            <p data-i18n="featureOshiBody">ジャンルごとに推しを登録。テーマカラーやカテゴリで、自分の推し活に合わせて管理できます。</p>
-          </article>
-
-          <article class="feature-card">
-            <span class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 5h14v14H5z"/><path d="M8 9h8M8 13h8M8 17h4"/></svg>
-            </span>
-            <h3 data-i18n="featureReportTitle">レポートを共有</h3>
-            <p data-i18n="featureReportBody">ライブやイベントの記録を残し、共有設定にしたレポートはタイムラインにも表示できます。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="flow" aria-labelledby="flow-title">
-      <div class="section-inner">
-        <p class="section-kicker" data-i18n="workflowKicker">Workflow</p>
-        <h2 id="flow-title" data-i18n="workflowTitle">アプリを開くだけで、今やることが分かる。</h2>
-        <p class="section-lead" data-i18n="workflowLead">予定、通知、開催中イベント、次の予定までの日数をホームに集約。推し活の小さなタスクを、迷子にしません。</p>
-
-        <div class="flow-list">
-          <article class="flow-item">
-            <span class="flow-number">01</span>
-            <h3 data-i18n="workflowStep1Title">推しを登録</h3>
-            <p data-i18n="workflowStep1Body">ジャンルやテーマカラーを設定して、管理の軸を作ります。</p>
-          </article>
-          <article class="flow-item">
-            <span class="flow-number">02</span>
-            <h3 data-i18n="workflowStep2Title">予定を追加</h3>
-            <p data-i18n="workflowStep2Body">ライブ、発売日、抽選、支払いなどをカレンダーへ。</p>
-          </article>
-          <article class="flow-item">
-            <span class="flow-number">03</span>
-            <h3 data-i18n="workflowStep3Title">支出とグッズを記録</h3>
-            <p data-i18n="workflowStep3Body">イベントごとの出費や購入品をまとめて振り返れます。</p>
-          </article>
-          <article class="flow-item">
-            <span class="flow-number">04</span>
-            <h3 data-i18n="workflowStep4Title">レポートで残す</h3>
-            <p data-i18n="workflowStep4Body">その日の感想や思い出を、あとから読める形に。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="screenshots" class="screenshots" aria-labelledby="screenshots-title">
-      <div class="section-inner">
-        <p class="section-kicker" data-i18n="screenshotsKicker">Screenshots</p>
-        <h2 id="screenshots-title" data-i18n="screenshotsTitle">予定も、支出も、思い出も。</h2>
-        <p class="section-lead" data-i18n="screenshotsLead">ホーム、カレンダー、支出、推しプロフィール、レポート、通知。推し活の情報を必要な場所からすぐ確認できます。</p>
-
-        <div class="screenshot-strip" aria-label="Oshi Lifeのスクリーンショット" data-i18n-aria="screenshotsStripLabel">
-          <figure class="screenshot">
-            <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d0/88/35/d08835bd-569e-2538-d605-c5c9acfba878/01_home.png/600x1300bb.webp" alt="Oshi Lifeのホーム画面" data-i18n-alt="screenshotHomeAlt" width="600" height="1300">
-          </figure>
-          <figure class="screenshot">
-            <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/95/c0/bc/95c0bcee-68b8-af94-2d8d-ce635a23580e/02_calendar.png/600x1300bb.webp" alt="Oshi Lifeのカレンダー画面" data-i18n-alt="screenshotCalendarAlt" width="600" height="1300" loading="lazy">
-          </figure>
-          <figure class="screenshot">
-            <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/1d/d1/27/1dd1276b-0822-7e05-c2cd-33b393c7af7a/03_expenses.png/600x1300bb.webp" alt="Oshi Lifeの支出画面" data-i18n-alt="screenshotExpensesAlt" width="600" height="1300" loading="lazy">
-          </figure>
-          <figure class="screenshot">
-            <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/0a/a5/40/0aa5402c-baee-c9f0-a89c-84bae3b48649/04_oshi.png/600x1300bb.webp" alt="Oshi Lifeの推しプロフィール画面" data-i18n-alt="screenshotOshiAlt" width="600" height="1300" loading="lazy">
-          </figure>
-          <figure class="screenshot">
-            <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/47/52/9d/47529d01-dc2e-7622-9c50-ca44629aaf70/05_report.png/600x1300bb.webp" alt="Oshi Lifeのレポート画面" data-i18n-alt="screenshotReportAlt" width="600" height="1300" loading="lazy">
-          </figure>
-          <figure class="screenshot">
-            <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/81/2f/ef/812fef3b-60ed-a91c-1dc0-4e5938372045/06_notifications.png/600x1300bb.webp" alt="Oshi Lifeの通知画面" data-i18n-alt="screenshotNotificationsAlt" width="600" height="1300" loading="lazy">
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section id="premium" class="plans" aria-labelledby="premium-title">
-      <div class="section-inner">
-        <p class="section-kicker" data-i18n="premiumKicker">Free / Premium</p>
-        <h2 id="premium-title" data-i18n="premiumTitle">まずは無料で、もっと使うならPremiumへ。</h2>
-        <p class="section-lead" data-i18n="premiumLead">主要機能は無料で利用できます。Premiumでは登録上限の拡張、広告非表示、画像バックアップなどを利用できます。</p>
-
-        <div class="plan-grid">
-          <article class="plan">
-            <strong data-i18n="freePlanTitle">Free</strong>
-            <p data-i18n="freePlanBody">推し活の予定・支出・レポート管理をすぐに始められます。</p>
-            <ul>
-              <li data-i18n="freePlanItem1">推しの登録</li>
-              <li data-i18n="freePlanItem2">予定と通知</li>
-              <li data-i18n="freePlanItem3">支出・グッズ記録</li>
-              <li data-i18n="freePlanItem4">レポート作成</li>
-            </ul>
-          </article>
-          <article class="plan">
-            <strong data-i18n="premiumPlanTitle">Premium</strong>
-            <p data-i18n="premiumPlanBody">たくさん記録したい人向けに、上限拡張とバックアップを用意しています。</p>
-            <ul>
-              <li data-i18n="premiumPlanItem1">推し・予定・支出・レポートの上限拡張</li>
-              <li data-i18n="premiumPlanItem2">広告非表示</li>
-              <li data-i18n="premiumPlanItem3">画像のクラウドバックアップ</li>
-              <li data-i18n="premiumPlanItem4">月額・年額プラン</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-cta" aria-labelledby="download-title">
-      <div class="section-inner">
-        <p class="section-kicker" data-i18n="downloadKicker">Download</p>
-        <h2 id="download-title" data-i18n="downloadTitle">推しとの毎日を、今日から記録しよう。</h2>
-        <p class="section-lead" data-i18n="downloadLead">Oshi LifeはApp Storeで無料配信中です。iPhoneからすぐに始められます。</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="https://apps.apple.com/jp/app/oshi-life/id6780718555">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.53 2.01c.12 1.02-.3 2.03-.88 2.77-.63.8-1.72 1.42-2.73 1.34-.14-.98.35-2.05.91-2.74.65-.79 1.79-1.36 2.7-1.37Zm3.5 16.57c-.53 1.22-.79 1.76-1.47 2.84-.96 1.48-2.31 3.33-3.99 3.35-1.49.01-1.87-.97-3.89-.96-2.02.01-2.45.98-3.94.97-1.68-.02-2.96-1.68-3.92-3.16-2.68-4.12-2.96-8.96-1.3-11.53 1.18-1.82 3.04-2.89 4.79-2.89 1.78 0 2.9.98 4.37.98 1.43 0 2.3-.98 4.36-.98 1.56 0 3.21.85 4.38 2.31-3.85 2.11-3.22 7.61.61 9.07Z"/></svg>
-            <span data-i18n="appStore">App Storeで見る</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div>
-        <strong>Oshi Life</strong><br>
-        <span>© 2026 Oshi Life</span>
-      </div>
-      <nav class="footer-links" aria-label="フッターナビゲーション" data-i18n-aria="footerNavLabel">
-        <a href="./ja/terms.html" data-legal="terms" data-i18n="footerTerms">利用規約</a>
-        <a href="./ja/privacy.html" data-legal="privacy" data-i18n="footerPrivacy">プライバシーポリシー</a>
-        <a href="https://forms.gle/GTZoGiHJLudqfbcp8" data-i18n="footerContact">お問い合わせ</a>
-      </nav>
-    </div>
-  </footer>
-  <script>
-    const translations = {
-      ja: {
-        htmlLang: "ja",
-        folder: "./ja",
-        pageTitle: "Oshi Life - 推し活の予定・支出・グッズをまとめて管理",
-        metaDescription: "Oshi Lifeは、推し活の予定・支出・グッズ・レポートをまとめて管理できるiPhoneアプリです。",
-        ogTitle: "Oshi Life - 推し活の予定・支出・グッズをまとめて管理",
-        ogDescription: "ライブ、発売日、支払い、グッズ、思い出メモまで。推し活を一冊にまとめるiPhoneアプリ。",
-        siteHeaderLabel: "サイトヘッダー",
-        brandLabel: "Oshi Life トップへ",
-        pageNavLabel: "ページ内ナビゲーション",
-        languageSelectLabel: "言語を選択",
-        navFeatures: "機能",
-        navScreenshots: "画面",
-        navPremium: "Premium",
-        navGet: "入手",
-        heroEyebrow: "iPhone向け推し活管理アプリ",
-        heroTitle: "推し活、ぜんぶこの一冊に。",
-        heroLead: "ライブや発売日の予定、チケットやグッズの支出、思い出レポートまで。複数のメモや家計簿を行き来せず、Oshi Lifeだけで今日やることが分かります。",
-        mainActionsLabel: "主要アクション",
-        appStore: "App Storeで見る",
-        viewScreenshots: "画面を見る",
-        appInfoLabel: "アプリ情報",
-        metaFree: "無料・アプリ内購入",
-        metaIos: "iOS 17.0以降",
-        metaLifestyle: "ライフスタイル",
-        metaAge: "4歳以上",
-        featuresKicker: "Features",
-        featuresTitle: "推しごとの予定から、使った金額まで。",
-        featuresLead: "登録した推しごとに、予定・支出・グッズ・レポートを整理。次のイベントや支払い期限を見逃しにくくします。",
-        featureCalendarTitle: "予定をカレンダーで一望",
-        featureCalendarBody: "ライブ、発売、配信、当落発表、支払期限など、推し活ならではの予定をまとめて確認できます。",
-        featureExpenseTitle: "支出をかんたん記録",
-        featureExpenseBody: "チケット、グッズ、交通費、宿泊、サブスクまで。推しにいくら使ったかを見える化します。",
-        featureGoodsTitle: "グッズと思い出を保存",
-        featureGoodsBody: "集めたグッズやイベントの感想メモを残して、あとから振り返りやすく整理できます。",
-        featureNotificationTitle: "通知で大事な瞬間を逃さない",
-        featureNotificationBody: "締切前やイベント前にリマインド。申し込み、支払い、当落発表を落ち着いて追えます。",
-        featureOshiTitle: "複数の推しを整理",
-        featureOshiBody: "ジャンルごとに推しを登録。テーマカラーやカテゴリで、自分の推し活に合わせて管理できます。",
-        featureReportTitle: "レポートを共有",
-        featureReportBody: "ライブやイベントの記録を残し、共有設定にしたレポートはタイムラインにも表示できます。",
-        workflowKicker: "Workflow",
-        workflowTitle: "アプリを開くだけで、今やることが分かる。",
-        workflowLead: "予定、通知、開催中イベント、次の予定までの日数をホームに集約。推し活の小さなタスクを、迷子にしません。",
-        workflowStep1Title: "推しを登録",
-        workflowStep1Body: "ジャンルやテーマカラーを設定して、管理の軸を作ります。",
-        workflowStep2Title: "予定を追加",
-        workflowStep2Body: "ライブ、発売日、抽選、支払いなどをカレンダーへ。",
-        workflowStep3Title: "支出とグッズを記録",
-        workflowStep3Body: "イベントごとの出費や購入品をまとめて振り返れます。",
-        workflowStep4Title: "レポートで残す",
-        workflowStep4Body: "その日の感想や思い出を、あとから読める形に。",
-        screenshotsKicker: "Screenshots",
-        screenshotsTitle: "予定も、支出も、思い出も。",
-        screenshotsLead: "ホーム、カレンダー、支出、推しプロフィール、レポート、通知。推し活の情報を必要な場所からすぐ確認できます。",
-        screenshotsStripLabel: "Oshi Lifeのスクリーンショット",
-        screenshotHomeAlt: "Oshi Lifeのホーム画面",
-        screenshotCalendarAlt: "Oshi Lifeのカレンダー画面",
-        screenshotExpensesAlt: "Oshi Lifeの支出画面",
-        screenshotOshiAlt: "Oshi Lifeの推しプロフィール画面",
-        screenshotReportAlt: "Oshi Lifeのレポート画面",
-        screenshotNotificationsAlt: "Oshi Lifeの通知画面",
-        premiumKicker: "Free / Premium",
-        premiumTitle: "まずは無料で、もっと使うならPremiumへ。",
-        premiumLead: "主要機能は無料で利用できます。Premiumでは登録上限の拡張、広告非表示、画像バックアップなどを利用できます。",
-        freePlanTitle: "Free",
-        freePlanBody: "推し活の予定・支出・レポート管理をすぐに始められます。",
-        freePlanItem1: "推しの登録",
-        freePlanItem2: "予定と通知",
-        freePlanItem3: "支出・グッズ記録",
-        freePlanItem4: "レポート作成",
-        premiumPlanTitle: "Premium",
-        premiumPlanBody: "たくさん記録したい人向けに、上限拡張とバックアップを用意しています。",
-        premiumPlanItem1: "推し・予定・支出・レポートの上限拡張",
-        premiumPlanItem2: "広告非表示",
-        premiumPlanItem3: "画像のクラウドバックアップ",
-        premiumPlanItem4: "月額・年額プラン",
-        downloadKicker: "Download",
-        downloadTitle: "推しとの毎日を、今日から記録しよう。",
-        downloadLead: "Oshi LifeはApp Storeで無料配信中です。iPhoneからすぐに始められます。",
-        footerNavLabel: "フッターナビゲーション",
-        footerTerms: "利用規約",
-        footerPrivacy: "プライバシーポリシー",
-        footerContact: "お問い合わせ"
-      },
-      en: {
-        htmlLang: "en",
-        folder: "./en",
-        pageTitle: "Oshi Life - Manage your oshi events, spending, goods, and reports",
-        metaDescription: "Oshi Life is an iPhone app for managing oshi activities, including schedules, spending, goods, and reports.",
-        ogTitle: "Oshi Life - Manage your oshi events, spending, goods, and reports",
-        ogDescription: "Keep concerts, release dates, payments, goods, and memories together in one app for your oshi life.",
-        siteHeaderLabel: "Site header",
-        brandLabel: "Go to Oshi Life top",
-        pageNavLabel: "Page navigation",
-        languageSelectLabel: "Select language",
-        navFeatures: "Features",
-        navScreenshots: "Screens",
-        navPremium: "Premium",
-        navGet: "Get",
-        heroEyebrow: "Oshi activity manager for iPhone",
-        heroTitle: "All your oshi life in one place.",
-        heroLead: "From concerts and release dates to ticket costs, goods purchases, and memory reports, Oshi Life helps you know what to do today without jumping between notes and budget apps.",
-        mainActionsLabel: "Primary actions",
-        appStore: "View on the App Store",
-        viewScreenshots: "View screens",
-        appInfoLabel: "App information",
-        metaFree: "Free with in-app purchases",
-        metaIos: "iOS 17.0 or later",
-        metaLifestyle: "Lifestyle",
-        metaAge: "Ages 4+",
-        featuresKicker: "Features",
-        featuresTitle: "From each oshi's schedule to every yen you spent.",
-        featuresLead: "Organize events, expenses, goods, and reports by oshi so you are less likely to miss the next event or payment deadline.",
-        featureCalendarTitle: "See events on a calendar",
-        featureCalendarBody: "Keep track of concerts, releases, streams, lottery results, payment deadlines, and other oshi-specific dates.",
-        featureExpenseTitle: "Record spending quickly",
-        featureExpenseBody: "Visualize how much you spend on tickets, goods, transportation, hotels, subscriptions, and more.",
-        featureGoodsTitle: "Save goods and memories",
-        featureGoodsBody: "Keep collected goods and event notes organized so you can look back on them later.",
-        featureNotificationTitle: "Never miss important moments",
-        featureNotificationBody: "Get reminders before deadlines and events so applications, payments, and results are easier to follow.",
-        featureOshiTitle: "Organize multiple oshis",
-        featureOshiBody: "Register oshis by genre, theme color, and category to match the way you enjoy your oshi life.",
-        featureReportTitle: "Share reports",
-        featureReportBody: "Save concert and event memories, and show shared reports on the timeline when you choose to share them.",
-        workflowKicker: "Workflow",
-        workflowTitle: "Open the app and see what matters now.",
-        workflowLead: "Home brings together events, notifications, live events, and countdowns so small oshi-life tasks do not get lost.",
-        workflowStep1Title: "Register an oshi",
-        workflowStep1Body: "Set the genre and theme color to create the center of your tracking.",
-        workflowStep2Title: "Add events",
-        workflowStep2Body: "Put concerts, release dates, lotteries, and payments on your calendar.",
-        workflowStep3Title: "Track expenses and goods",
-        workflowStep3Body: "Review event spending and purchases together later.",
-        workflowStep4Title: "Write reports",
-        workflowStep4Body: "Keep the day's feelings and memories in a form you can revisit.",
-        screenshotsKicker: "Screenshots",
-        screenshotsTitle: "Events, spending, and memories.",
-        screenshotsLead: "Home, calendar, expenses, oshi profiles, reports, and notifications keep your oshi-life information close at hand.",
-        screenshotsStripLabel: "Oshi Life screenshots",
-        screenshotHomeAlt: "Oshi Life home screen",
-        screenshotCalendarAlt: "Oshi Life calendar screen",
-        screenshotExpensesAlt: "Oshi Life expenses screen",
-        screenshotOshiAlt: "Oshi Life oshi profile screen",
-        screenshotReportAlt: "Oshi Life report screen",
-        screenshotNotificationsAlt: "Oshi Life notifications screen",
-        premiumKicker: "Free / Premium",
-        premiumTitle: "Start free, upgrade when you need more.",
-        premiumLead: "Core features are available for free. Premium expands limits, removes ads, and enables image backup.",
-        freePlanTitle: "Free",
-        freePlanBody: "Start managing oshi events, spending, and reports right away.",
-        freePlanItem1: "Register oshis",
-        freePlanItem2: "Events and notifications",
-        freePlanItem3: "Expenses and goods records",
-        freePlanItem4: "Report creation",
-        premiumPlanTitle: "Premium",
-        premiumPlanBody: "For people who want to record more, Premium adds higher limits and backup.",
-        premiumPlanItem1: "Expanded limits for oshis, events, expenses, and reports",
-        premiumPlanItem2: "Ad-free experience",
-        premiumPlanItem3: "Cloud image backup",
-        premiumPlanItem4: "Monthly and yearly plans",
-        downloadKicker: "Download",
-        downloadTitle: "Start recording your oshi days today.",
-        downloadLead: "Oshi Life is available for free on the App Store. You can start right away from your iPhone.",
-        footerNavLabel: "Footer navigation",
-        footerTerms: "Terms of Use",
-        footerPrivacy: "Privacy Policy",
-        footerContact: "Contact"
-      },
-      ko: {
-        htmlLang: "ko",
-        folder: "./ko",
-        pageTitle: "Oshi Life - 오시 활동의 일정, 지출, 굿즈, 리포트를 한곳에",
-        metaDescription: "Oshi Life는 오시 활동의 일정, 지출, 굿즈, 리포트를 함께 관리할 수 있는 iPhone 앱입니다.",
-        ogTitle: "Oshi Life - 오시 활동의 일정, 지출, 굿즈, 리포트를 한곳에",
-        ogDescription: "라이브, 발매일, 결제, 굿즈, 추억 메모까지. 오시 활동을 한 앱에 정리하세요.",
-        siteHeaderLabel: "사이트 헤더",
-        brandLabel: "Oshi Life 맨 위로",
-        pageNavLabel: "페이지 내비게이션",
-        languageSelectLabel: "언어 선택",
-        navFeatures: "기능",
-        navScreenshots: "화면",
-        navPremium: "Premium",
-        navGet: "받기",
-        heroEyebrow: "iPhone용 오시 활동 관리 앱",
-        heroTitle: "오시 활동을 한 권에.",
-        heroLead: "라이브와 발매일 일정, 티켓과 굿즈 지출, 추억 리포트까지. 여러 메모와 가계부를 오가지 않고 Oshi Life 하나로 오늘 할 일을 확인할 수 있습니다.",
-        mainActionsLabel: "주요 작업",
-        appStore: "App Store에서 보기",
-        viewScreenshots: "화면 보기",
-        appInfoLabel: "앱 정보",
-        metaFree: "무료, 앱 내 구입",
-        metaIos: "iOS 17.0 이상",
-        metaLifestyle: "라이프스타일",
-        metaAge: "4세 이상",
-        featuresKicker: "기능",
-        featuresTitle: "오시별 일정부터 사용한 금액까지.",
-        featuresLead: "등록한 오시별로 일정, 지출, 굿즈, 리포트를 정리해 다음 이벤트와 결제 마감을 놓치기 어렵게 합니다.",
-        featureCalendarTitle: "일정을 캘린더로 한눈에",
-        featureCalendarBody: "라이브, 발매, 방송, 당첨 발표, 결제 마감 등 오시 활동 특유의 일정을 함께 확인할 수 있습니다.",
-        featureExpenseTitle: "지출을 간단히 기록",
-        featureExpenseBody: "티켓, 굿즈, 교통비, 숙박, 구독까지. 오시에게 얼마나 썼는지 시각화합니다.",
-        featureGoodsTitle: "굿즈와 추억 저장",
-        featureGoodsBody: "모은 굿즈와 이벤트 감상 메모를 남겨 나중에 돌아보기 쉽게 정리할 수 있습니다.",
-        featureNotificationTitle: "중요한 순간을 놓치지 않기",
-        featureNotificationBody: "마감 전이나 이벤트 전에 알려 줍니다. 신청, 결제, 발표를 차분히 따라갈 수 있습니다.",
-        featureOshiTitle: "여러 오시 정리",
-        featureOshiBody: "장르별로 오시를 등록하고 테마 컬러와 카테고리로 나만의 방식에 맞춰 관리할 수 있습니다.",
-        featureReportTitle: "리포트 공유",
-        featureReportBody: "라이브와 이벤트 기록을 남기고, 공유 설정한 리포트는 타임라인에도 표시할 수 있습니다.",
-        workflowKicker: "흐름",
-        workflowTitle: "앱을 열면 지금 할 일이 보입니다.",
-        workflowLead: "일정, 알림, 진행 중인 이벤트, 다음 일정까지 남은 날짜를 홈에 모아 작은 할 일을 놓치지 않게 합니다.",
-        workflowStep1Title: "오시 등록",
-        workflowStep1Body: "장르와 테마 컬러를 설정해 관리의 기준을 만듭니다.",
-        workflowStep2Title: "일정 추가",
-        workflowStep2Body: "라이브, 발매일, 추첨, 결제 등을 캘린더에 추가합니다.",
-        workflowStep3Title: "지출과 굿즈 기록",
-        workflowStep3Body: "이벤트별 지출과 구매품을 함께 돌아볼 수 있습니다.",
-        workflowStep4Title: "리포트로 남기기",
-        workflowStep4Body: "그날의 감상과 추억을 나중에 읽을 수 있는 형태로 남깁니다.",
-        screenshotsKicker: "스크린샷",
-        screenshotsTitle: "일정도, 지출도, 추억도.",
-        screenshotsLead: "홈, 캘린더, 지출, 오시 프로필, 리포트, 알림에서 오시 활동 정보를 필요한 순간 바로 확인할 수 있습니다.",
-        screenshotsStripLabel: "Oshi Life 스크린샷",
-        screenshotHomeAlt: "Oshi Life 홈 화면",
-        screenshotCalendarAlt: "Oshi Life 캘린더 화면",
-        screenshotExpensesAlt: "Oshi Life 지출 화면",
-        screenshotOshiAlt: "Oshi Life 오시 프로필 화면",
-        screenshotReportAlt: "Oshi Life 리포트 화면",
-        screenshotNotificationsAlt: "Oshi Life 알림 화면",
-        premiumKicker: "Free / Premium",
-        premiumTitle: "먼저 무료로, 더 필요하면 Premium으로.",
-        premiumLead: "주요 기능은 무료로 이용할 수 있습니다. Premium에서는 등록 한도 확장, 광고 숨김, 이미지 백업 등을 이용할 수 있습니다.",
-        freePlanTitle: "Free",
-        freePlanBody: "오시 활동의 일정, 지출, 리포트 관리를 바로 시작할 수 있습니다.",
-        freePlanItem1: "오시 등록",
-        freePlanItem2: "일정과 알림",
-        freePlanItem3: "지출 및 굿즈 기록",
-        freePlanItem4: "리포트 작성",
-        premiumPlanTitle: "Premium",
-        premiumPlanBody: "많이 기록하고 싶은 사람을 위해 한도 확장과 백업을 제공합니다.",
-        premiumPlanItem1: "오시, 일정, 지출, 리포트 한도 확장",
-        premiumPlanItem2: "광고 숨김",
-        premiumPlanItem3: "이미지 클라우드 백업",
-        premiumPlanItem4: "월간 및 연간 플랜",
-        downloadKicker: "다운로드",
-        downloadTitle: "오시와의 매일을 오늘부터 기록하세요.",
-        downloadLead: "Oshi Life는 App Store에서 무료로 배포 중입니다. iPhone에서 바로 시작할 수 있습니다.",
-        footerNavLabel: "푸터 내비게이션",
-        footerTerms: "이용약관",
-        footerPrivacy: "개인정보처리방침",
-        footerContact: "문의"
-      },
-      "zh-Hans": {
-        htmlLang: "zh-Hans",
-        folder: "./zh-Hans",
-        pageTitle: "Oshi Life - 管理推活的日程、支出、周边和报告",
-        metaDescription: "Oshi Life是一款可集中管理推活日程、支出、周边和报告的iPhone应用。",
-        ogTitle: "Oshi Life - 管理推活的日程、支出、周边和报告",
-        ogDescription: "从演出、发售日、付款、周边到回忆记录，把推活整理在一个应用里。",
-        siteHeaderLabel: "网站页眉",
-        brandLabel: "前往 Oshi Life 顶部",
-        pageNavLabel: "页面导航",
-        languageSelectLabel: "选择语言",
-        navFeatures: "功能",
-        navScreenshots: "画面",
-        navPremium: "Premium",
-        navGet: "获取",
-        heroEyebrow: "面向 iPhone 的推活管理应用",
-        heroTitle: "推活的一切，都在这里。",
-        heroLead: "从演出和发售日的日程，到票券与周边支出，再到回忆报告。不必在多个备忘录和记账应用之间切换，只用 Oshi Life 就能知道今天要做什么。",
-        mainActionsLabel: "主要操作",
-        appStore: "在 App Store 查看",
-        viewScreenshots: "查看画面",
-        appInfoLabel: "应用信息",
-        metaFree: "免费，提供 App 内购买",
-        metaIos: "iOS 17.0 或更高版本",
-        metaLifestyle: "生活方式",
-        metaAge: "4岁以上",
-        featuresKicker: "功能",
-        featuresTitle: "从每位推的日程，到花过的金额。",
-        featuresLead: "按已登记的推整理日程、支出、周边和报告，让你更不容易错过下一场活动或付款期限。",
-        featureCalendarTitle: "用日历总览日程",
-        featureCalendarBody: "演出、发售、直播、抽选结果、付款期限等推活特有的日程都能集中查看。",
-        featureExpenseTitle: "轻松记录支出",
-        featureExpenseBody: "从票券、周边、交通费、住宿到订阅，直观看到你为推花了多少钱。",
-        featureGoodsTitle: "保存周边和回忆",
-        featureGoodsBody: "记录收集的周边和活动感想，方便之后回顾整理。",
-        featureNotificationTitle: "不错过重要时刻",
-        featureNotificationBody: "在截止前或活动前提醒你，让申请、付款和结果公布都能从容跟进。",
-        featureOshiTitle: "整理多位推",
-        featureOshiBody: "按类型登记推，并通过主题色和分类按照自己的推活方式管理。",
-        featureReportTitle: "分享报告",
-        featureReportBody: "留下演出和活动记录，设置为共享的报告也可以显示在时间线上。",
-        workflowKicker: "流程",
-        workflowTitle: "打开应用，就知道现在该做什么。",
-        workflowLead: "主页汇总日程、通知、正在进行的活动以及距离下一项日程的天数，不让推活中的小任务迷路。",
-        workflowStep1Title: "登记推",
-        workflowStep1Body: "设置类型和主题色，建立管理的核心。",
-        workflowStep2Title: "添加日程",
-        workflowStep2Body: "将演出、发售日、抽选、付款等加入日历。",
-        workflowStep3Title: "记录支出和周边",
-        workflowStep3Body: "按活动回顾花费和购买的物品。",
-        workflowStep4Title: "用报告留下记录",
-        workflowStep4Body: "把当天的感想和回忆保存成以后可以阅读的形式。",
-        screenshotsKicker: "截图",
-        screenshotsTitle: "日程、支出和回忆。",
-        screenshotsLead: "主页、日历、支出、推档案、报告和通知，让推活信息在需要时马上查看。",
-        screenshotsStripLabel: "Oshi Life截图",
-        screenshotHomeAlt: "Oshi Life主页画面",
-        screenshotCalendarAlt: "Oshi Life日历画面",
-        screenshotExpensesAlt: "Oshi Life支出画面",
-        screenshotOshiAlt: "Oshi Life推档案画面",
-        screenshotReportAlt: "Oshi Life报告画面",
-        screenshotNotificationsAlt: "Oshi Life通知画面",
-        premiumKicker: "Free / Premium",
-        premiumTitle: "先免费开始，需要更多时升级到 Premium。",
-        premiumLead: "主要功能可免费使用。Premium 可扩展登记上限、隐藏广告并启用图片备份等功能。",
-        freePlanTitle: "Free",
-        freePlanBody: "可以立即开始管理推活的日程、支出和报告。",
-        freePlanItem1: "登记推",
-        freePlanItem2: "日程与通知",
-        freePlanItem3: "支出和周边记录",
-        freePlanItem4: "创建报告",
-        premiumPlanTitle: "Premium",
-        premiumPlanBody: "面向想记录更多内容的用户，提供上限扩展和备份。",
-        premiumPlanItem1: "扩展推、日程、支出、报告的上限",
-        premiumPlanItem2: "隐藏广告",
-        premiumPlanItem3: "图片云备份",
-        premiumPlanItem4: "月度和年度计划",
-        downloadKicker: "下载",
-        downloadTitle: "从今天开始记录与你的推相伴的每一天。",
-        downloadLead: "Oshi Life正在 App Store 免费发布。可直接从 iPhone 开始使用。",
-        footerNavLabel: "页脚导航",
-        footerTerms: "使用条款",
-        footerPrivacy: "隐私政策",
-        footerContact: "联系我们"
-      },
-      "zh-Hant": {
-        htmlLang: "zh-Hant",
-        folder: "./zh-Hant",
-        pageTitle: "Oshi Life - 管理推活的行程、支出、周邊和報告",
-        metaDescription: "Oshi Life是一款可集中管理推活行程、支出、周邊和報告的iPhone應用程式。",
-        ogTitle: "Oshi Life - 管理推活的行程、支出、周邊和報告",
-        ogDescription: "從演出、發售日、付款、周邊到回憶記錄，把推活整理在一個應用程式裡。",
-        siteHeaderLabel: "網站頁首",
-        brandLabel: "前往 Oshi Life 頂部",
-        pageNavLabel: "頁面導覽",
-        languageSelectLabel: "選擇語言",
-        navFeatures: "功能",
-        navScreenshots: "畫面",
-        navPremium: "Premium",
-        navGet: "取得",
-        heroEyebrow: "面向 iPhone 的推活管理應用程式",
-        heroTitle: "推活的一切，都在這裡。",
-        heroLead: "從演出和發售日的行程，到票券與周邊支出，再到回憶報告。不必在多個備忘錄和記帳應用程式之間切換，只用 Oshi Life 就能知道今天要做什麼。",
-        mainActionsLabel: "主要操作",
-        appStore: "在 App Store 查看",
-        viewScreenshots: "查看畫面",
-        appInfoLabel: "應用程式資訊",
-        metaFree: "免費，提供 App 內購買",
-        metaIos: "iOS 17.0 或更高版本",
-        metaLifestyle: "生活風格",
-        metaAge: "4歲以上",
-        featuresKicker: "功能",
-        featuresTitle: "從每位推的行程，到花過的金額。",
-        featuresLead: "按已登錄的推整理行程、支出、周邊和報告，讓你更不容易錯過下一場活動或付款期限。",
-        featureCalendarTitle: "用行事曆總覽行程",
-        featureCalendarBody: "演出、發售、直播、抽選結果、付款期限等推活特有的行程都能集中查看。",
-        featureExpenseTitle: "輕鬆記錄支出",
-        featureExpenseBody: "從票券、周邊、交通費、住宿到訂閱，直觀看到你為推花了多少錢。",
-        featureGoodsTitle: "保存周邊和回憶",
-        featureGoodsBody: "記錄收集的周邊和活動感想，方便之後回顧整理。",
-        featureNotificationTitle: "不錯過重要時刻",
-        featureNotificationBody: "在截止前或活動前提醒你，讓申請、付款和結果公布都能從容跟進。",
-        featureOshiTitle: "整理多位推",
-        featureOshiBody: "按類型登錄推，並透過主題色和分類按照自己的推活方式管理。",
-        featureReportTitle: "分享報告",
-        featureReportBody: "留下演出和活動記錄，設定為共享的報告也可以顯示在時間軸上。",
-        workflowKicker: "流程",
-        workflowTitle: "打開應用程式，就知道現在該做什麼。",
-        workflowLead: "首頁彙總行程、通知、正在進行的活動以及距離下一項行程的天數，不讓推活中的小任務迷路。",
-        workflowStep1Title: "登錄推",
-        workflowStep1Body: "設定類型和主題色，建立管理的核心。",
-        workflowStep2Title: "新增行程",
-        workflowStep2Body: "將演出、發售日、抽選、付款等加入行事曆。",
-        workflowStep3Title: "記錄支出和周邊",
-        workflowStep3Body: "按活動回顧花費和購買的物品。",
-        workflowStep4Title: "用報告留下記錄",
-        workflowStep4Body: "把當天的感想和回憶保存成以後可以閱讀的形式。",
-        screenshotsKicker: "截圖",
-        screenshotsTitle: "行程、支出和回憶。",
-        screenshotsLead: "首頁、行事曆、支出、推檔案、報告和通知，讓推活資訊在需要時馬上查看。",
-        screenshotsStripLabel: "Oshi Life截圖",
-        screenshotHomeAlt: "Oshi Life首頁畫面",
-        screenshotCalendarAlt: "Oshi Life行事曆畫面",
-        screenshotExpensesAlt: "Oshi Life支出畫面",
-        screenshotOshiAlt: "Oshi Life推檔案畫面",
-        screenshotReportAlt: "Oshi Life報告畫面",
-        screenshotNotificationsAlt: "Oshi Life通知畫面",
-        premiumKicker: "Free / Premium",
-        premiumTitle: "先免費開始，需要更多時升級到 Premium。",
-        premiumLead: "主要功能可免費使用。Premium 可擴展登錄上限、隱藏廣告並啟用圖片備份等功能。",
-        freePlanTitle: "Free",
-        freePlanBody: "可以立即開始管理推活的行程、支出和報告。",
-        freePlanItem1: "登錄推",
-        freePlanItem2: "行程與通知",
-        freePlanItem3: "支出和周邊記錄",
-        freePlanItem4: "建立報告",
-        premiumPlanTitle: "Premium",
-        premiumPlanBody: "面向想記錄更多內容的使用者，提供上限擴展和備份。",
-        premiumPlanItem1: "擴展推、行程、支出、報告的上限",
-        premiumPlanItem2: "隱藏廣告",
-        premiumPlanItem3: "圖片雲端備份",
-        premiumPlanItem4: "月度和年度方案",
-        downloadKicker: "下載",
-        downloadTitle: "從今天開始記錄與你的推相伴的每一天。",
-        downloadLead: "Oshi Life正在 App Store 免費發布。可直接從 iPhone 開始使用。",
-        footerNavLabel: "頁尾導覽",
-        footerTerms: "使用條款",
-        footerPrivacy: "隱私權政策",
-        footerContact: "聯絡我們"
-      }
-    };
-
-    const supportedLanguages = Object.keys(translations);
-    const languageSelect = document.getElementById("language-select");
-
-    function normalizedLanguage(value) {
-      if (!value) return "ja";
-      if (supportedLanguages.includes(value)) return value;
-      const lower = value.toLowerCase();
-      if (lower.startsWith("ko")) return "ko";
-      if (lower.includes("hant") || lower.includes("tw") || lower.includes("hk") || lower.includes("mo")) return "zh-Hant";
-      if (lower.startsWith("zh")) return "zh-Hans";
-      if (lower.startsWith("en")) return "en";
-      return "ja";
-    }
-
-    function storedLanguage() {
-      try {
-        return localStorage.getItem("oshiLifeLanguage");
-      } catch {
-        return null;
-      }
-    }
-
-    function persistLanguage(lang) {
-      try {
-        localStorage.setItem("oshiLifeLanguage", lang);
-      } catch {
-        /* Ignore storage errors in private browsing modes. */
-      }
-    }
-
-    function updateUrlLanguage(lang) {
-      const url = new URL(window.location.href);
-      if (lang === "ja") {
-        url.searchParams.delete("lang");
-      } else {
-        url.searchParams.set("lang", lang);
-      }
-      window.history.replaceState({}, "", url);
-    }
-
-    function applyLanguage(lang, shouldPersist = false) {
-      const nextLang = normalizedLanguage(lang);
-      const copy = translations[nextLang];
-      document.documentElement.lang = copy.htmlLang;
-      document.title = copy.pageTitle;
-      document.querySelector('meta[name="description"]')?.setAttribute("content", copy.metaDescription);
-      document.querySelector('meta[property="og:title"]')?.setAttribute("content", copy.ogTitle);
-      document.querySelector('meta[property="og:description"]')?.setAttribute("content", copy.ogDescription);
-
-      document.querySelectorAll("[data-i18n]").forEach((element) => {
-        const key = element.dataset.i18n;
-        if (copy[key]) element.textContent = copy[key];
-      });
-
-      document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
-        const key = element.dataset.i18nAria;
-        if (copy[key]) element.setAttribute("aria-label", copy[key]);
-      });
-
-      document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
-        const key = element.dataset.i18nAlt;
-        if (copy[key]) element.setAttribute("alt", copy[key]);
-      });
-
-      document.querySelectorAll('[data-legal="terms"]').forEach((link) => {
-        link.href = `${copy.folder}/terms.html`;
-      });
-      document.querySelectorAll('[data-legal="privacy"]').forEach((link) => {
-        link.href = `${copy.folder}/privacy.html`;
-      });
-
-      if (languageSelect) languageSelect.value = nextLang;
-      if (shouldPersist) {
-        persistLanguage(nextLang);
-        updateUrlLanguage(nextLang);
-      }
-    }
-
-    const urlLanguage = new URLSearchParams(window.location.search).get("lang");
-    const initialLanguage = normalizedLanguage(urlLanguage || storedLanguage() || navigator.language);
-    applyLanguage(initialLanguage);
-
-    languageSelect?.addEventListener("change", (event) => {
-      applyLanguage(event.target.value, true);
-    });
-  </script>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header">
+<div class="site-header__inner">
+<a class="wordmark" href="./" aria-label="Oshi Life"><span class="wordmark__oshi" aria-hidden="true">Oshi </span><span class="wordmark__life" aria-hidden="true">Life</span></a>
+<details class="language-menu"><summary><svg class="language-menu__icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="visually-hidden">言語</span><span lang="ja">日本語</span></summary><ul><li><a href="./" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></details>
+<a class="button button--small site-header__cta" href="https://apps.apple.com/jp/app/oshi-life/id6780718555">App Store</a>
+</div>
+</header>
+<main id="main">
+<section id="top" class="section hero" aria-labelledby="top-title">
+<div class="section__inner section__inner--split">
+<div class="section__text">
+<p class="eyebrow">推し活の記録アプリ Oshi Life 2.0</p>
+<h1 id="top-title" class="hero__title"><span class="phrase">撮ったら、</span><span class="phrase">下書きまでできてる。</span></h1>
+<p class="hero__lead">チケットやレシートを撮ると、予定や支出、グッズの下書きができます。中身を確かめて保存すれば、手で打つのは直したいところだけ。申込の締切や当落発表、推しに使ったお金まで、iPhone ひとつで管理できます。</p>
+<div class="hero__actions"><a class="app-store-badge" href="https://apps.apple.com/jp/app/oshi-life/id6780718555"><img src="assets/badges/ja.svg" alt="App Store からダウンロード" width="109" height="40"></a></div>
+<p class="hero__note">撮って記録は、Free プランだと月3回まで（チケットとレシートを合わせた回数）。Premium は回数の制限がありません。</p>
+<p class="hero__requirements">無料（アプリ内課金あり）・iOS 17.0 以降の iPhone</p>
+</div>
+<div class="section__media"><figure class="media-slot media-slot--light"><div class="phone"><img src="assets/img/ja/home-light.webp" alt="Oshi Life のホーム画面。推しの色で塗られたカードの下に、次の予定とやること、今月の支出が並んでいる。" width="640" height="1391" decoding="async"></div></figure></div>
+</div>
+</section>
+<section id="snap" class="section" aria-labelledby="snap-title">
+<div class="section__inner section__inner--split">
+<div class="section__text">
+<p class="eyebrow">撮って記録</p>
+<h2 id="snap-title" class="section__title"><span class="phrase">レシートの品目が、</span><span class="phrase">そのままグッズと支出に。</span></h2>
+<p class="section__lead">遠征から帰って、財布の中のレシートを1枚ずつ打ち込む。その作業を、撮って中身を確かめる作業に変えます。</p>
+<ul class="points">
+<li class="point"><h3 class="point__title">レシートは品目ごとに</h3><p>アクリルスタンドとマフラータオルを買ったレシートなら、品目ごとにグッズと支出の記録が1件ずつできます。税などの残りは「その他」の支出にまとめ、品目が読めないときは合計を支出にします。</p></li>
+<li class="point"><h3 class="point__title">チケットは予定に</h3><p>公演名・日時・会場・座席・代金を読み取って、予定の下書きにします。代金が読めていれば、予定を保存したあとにチケット代も支出に残せます。</p></li>
+<li class="point"><h3 class="point__title">電子チケットのスクショも</h3><p>撮るほかに、写真から選ぶこともできます。チケットとレシートを読み違えたときは、同じ画像をもう一方として読み直せます。</p></li>
+</ul>
+<p class="callout">読み取りは iPhone の中で行います。読み取りのために画像や文字を外へ送ることはありません。</p>
+<p class="section__note">Free プランは月3回まで（チケットとレシートを合わせた回数）。Premium は回数の制限がありません。</p>
+</div>
+<figure class="section__media"><div class="phone"><img src="assets/img/ja/record.webp" alt="記録の画面。いちばん上に「撮って記録」があり、その下に記録の種類が並んでいる。" width="640" height="1391" decoding="async" loading="lazy"></div><figcaption class="section__caption">真ん中の「記録」（＋）から、どの画面でも開けます。</figcaption></figure>
+</div>
+</section>
+<section id="color" class="section section--dark section--reverse" aria-labelledby="color-title">
+<div class="section__inner section__inner--split">
+<div class="section__text">
+<p class="eyebrow">推しの色とダークモード</p>
+<h2 id="color-title" class="section__title"><span class="phrase">推しを切り替えると、</span><span class="phrase">アプリの色も変わる。</span></h2>
+<p class="section__lead">ボタンやタブ、カードの差し色が、いま選んでいる推しの色になります。ピンクの推しならピンクに、ミントの推しならミントに。</p>
+<ul class="points">
+<li class="point"><h3 class="point__title">推しごとに色を決めておける</h3><p>推しごとに色を選んでおくと、その推しに切り替えたときに、アプリ全体の色も一緒に変わります。</p></li>
+<li class="point"><h3 class="point__title">ダークモードにも</h3><p>はじめは iPhone の設定に合わせて切り替わります。設定の「表示モード」で、ライトかダークに固定することもできます。</p></li>
+</ul>
+</div>
+<div class="section__media"><figure class="media-slot media-slot--dark"><div class="phone"><img src="assets/img/ja/home-mint.webp" alt="ミントの推しを選んだときのホーム画面。" width="640" height="1391" decoding="async" loading="lazy"></div><div class="phone"><img src="assets/img/ja/home-dark.webp" alt="ダークモードのホーム画面。" width="640" height="1391" decoding="async" loading="lazy"></div></figure></div>
+</div>
+</section>
+<section id="schedule" class="section" aria-labelledby="schedule-title">
+<div class="section__inner section__inner--split">
+<div class="section__text">
+<p class="eyebrow">予定と当落</p>
+<h2 id="schedule-title" class="section__title"><span class="phrase">申込の締切を、</span><span class="phrase">スクショで覚えておかなくていい。</span></h2>
+<p class="section__lead">抽選に申し込んだら、その申込を Oshi Life に登録しておきます。申込締切や当落発表、入金期限が予定に並び、近づくとお知らせが届きます。</p>
+<ol class="timeline" aria-label="抽選の申込を登録してからの流れ">
+<li class="timeline__step"><h3 class="timeline__title">申込を登録する</h3><p>申し込んだ公演と、締切や発表の日時を入れておきます。</p></li>
+<li class="timeline__step"><h3 class="timeline__title">予定が3つ並ぶ</h3><p>申込締切・当落発表・入金期限が、自動でカレンダーに入ります。</p></li>
+<li class="timeline__step"><h3 class="timeline__title">当選したら公演日も</h3><p>当選を記録して公演日を入れると、公演の予定が加わります。</p></li>
+<li class="timeline__step"><h3 class="timeline__title">結果から当選率がわかる</h3><p>当落の結果を記録していくと、これまでの当選率を見られます。</p></li>
+</ol>
+<ul class="points">
+<li class="point"><h3 class="point__title">締切と入金は前日に</h3><p>申込締切と入金期限は前日に、当落発表はその時刻にお知らせします。</p></li>
+<li class="point"><h3 class="point__title">3日前と当日の朝にも <span class="point__tag">Premium</span></h3><p>申込締切と入金期限を、前日に加えて3日前と当日の朝にもお知らせします。</p></li>
+<li class="point"><h3 class="point__title">当落ボード</h3><p>予定タブの上の［カレンダー｜当落］で切り替えると、申込が「申込中」「当落待ち」「入金待ち」「参戦準備OK」「落選」に分かれて並びます。</p></li>
+<li class="point"><h3 class="point__title">予定は12種類</h3><p>ライブ、発売、配信、TV、ラジオ、YouTube、グッズなど。会場名も推しの名前も、自由に入力できます。</p></li>
+</ul>
+</div>
+<figure class="section__media"><div class="phone"><img src="assets/img/ja/schedule.webp" alt="予定タブのカレンダー。上に［カレンダー｜当落］の切り替えと、推しで絞り込むボタンが並んでいる。" width="640" height="1391" decoding="async" loading="lazy"></div><figcaption class="section__caption">推しが2人以上なら、推しで絞り込めます。</figcaption></figure>
+</div>
+</section>
+<section id="money" class="section section--reverse" aria-labelledby="money-title">
+<div class="section__inner section__inner--split">
+<div class="section__text">
+<p class="eyebrow">お金</p>
+<h2 id="money-title" class="section__title"><span class="phrase">今月いくら使ったか、</span><span class="phrase">電卓を出さずにわかる。</span></h2>
+<p class="section__lead">チケット、グッズ、交通費、宿泊、飲食。記録した支出は推しごと・カテゴリごとに集計されて、お金タブで月ごとに見返せます。</p>
+<ul class="points">
+<li class="point"><h3 class="point__title">今月の様子を1画面で</h3><p>合計と先月との差、内訳、一覧を、お金タブの1画面にまとめました。</p></li>
+<li class="point"><h3 class="point__title">入力を短く</h3><p>よく使う支出は、テンプレートから入れられます。サブスクや会費は定期支出にしておくと、期日が来た分が自動で入ります。</p></li>
+<li class="point"><h3 class="point__title">グッズと支出をいっしょに</h3><p>グッズを登録するときに「支出にも記録する」をオンにしておけば、支出の記録も一緒にできます。</p></li>
+<li class="point"><h3 class="point__title">推しごとに見る</h3><p>推しが2人以上なら、内訳と一覧を推しごとに絞り込めます。</p></li>
+<li class="point"><h3 class="point__title">予算 <span class="point__tag">Premium</span></h3><p>月の予算を決めると、残りがホームとウィジェットに出ます。予算の80%に達したときと、超えたときにお知らせします。</p></li>
+</ul>
+</div>
+<figure class="section__media"><div class="phone"><img src="assets/img/ja/money.webp" alt="お金タブ。今月の合計の下に、内訳と支出の一覧が並んでいる。" width="640" height="1391" decoding="async" loading="lazy"></div><figcaption class="section__caption">支出の CSV・PDF の書き出しは、Premium の機能です。</figcaption></figure>
+</div>
+</section>
+<section id="oshi" class="section" aria-labelledby="oshi-title">
+<div class="section__inner section__inner--split">
+<div class="section__text">
+<p class="eyebrow">推し</p>
+<h2 id="oshi-title" class="section__title"><span class="phrase">帰りの電車で、</span><span class="phrase">今日のセトリを書いておく。</span></h2>
+<p class="section__lead">思い出には、写真とセットリストを添えて残せます。推しのページには、プロフィールと記念日、グッズ、思い出がまとまっています。</p>
+<ul class="points">
+<li class="point"><h3 class="point__title">共有するかは1件ずつ</h3><p>共有を選んだ思い出は、題と本文、セットリストが「みんなのレポート」でほかの人にも読まれます。写真は共有されません。</p></li>
+<li class="point"><h3 class="point__title">節目の日に気づける</h3><p>推し始めてからの日数や誕生日、記念日。節目の日はホームでお祝いして、その日のうちなら記念カードを無料で作れます。誕生日と記念日には、朝9時にお知らせが届きます。</p></li>
+<li class="point"><h3 class="point__title">1年をカードに</h3><p>1年のまとめは、無料でシェアカードにできます。</p></li>
+</ul>
+</div>
+<figure class="section__media"><div class="phone"><img src="assets/img/ja/oshi.webp" alt="推しのページ。プロフィールの下に、記念日やグッズ、思い出が並んでいる。" width="640" height="1391" decoding="async" loading="lazy"></div><figcaption class="section__caption">推し活の振り返りと、月間のまとめ・記念日のシェアカードは Premium の機能です。</figcaption></figure>
+</div>
+</section>
+<section id="more" class="section" aria-labelledby="more-title">
+<div class="section__inner">
+<div class="section__text">
+<p class="eyebrow">そのほか</p>
+<h2 id="more-title" class="section__title"><span class="phrase">ほかにできること</span></h2>
+<p class="section__lead">ホーム画面やロック画面、Siri からも使えます。</p>
+</div>
+<ul class="points points--grid">
+<li class="point"><h3 class="point__title">ウィジェット</h3><p>「推し」のウィジェットに、推しの画像と推して何日目か、次の予定までの日数が出ます。「カウントダウン」と「今月の推し活費」のウィジェットは Premium です。</p></li>
+<li class="point"><h3 class="point__title">ライブ当日のロック画面</h3><p>開演の6時間前から、ロック画面に開演までのカウントダウンが出ます。対応する iPhone では Dynamic Island にも出ます。</p></li>
+<li class="point"><h3 class="point__title">参戦のしおり</h3><p>日時と会場、交通と宿、持ち物を1枚の画像にまとめて、同行者に送れます。金額は、はじめは画像に入らない設定です。</p></li>
+<li class="point"><h3 class="point__title">Siri とショートカット</h3><p>Siri やショートカットから、予定の追加や次の予定、今月の支出の確認ができます。</p></li>
+<li class="point"><h3 class="point__title">ログインは任意</h3><p>ゲストのままでも、ログインしたときと同じ機能を使えます。あとから Apple か Google でログインしても、記録は引き継がれます。</p></li>
+<li class="point"><h3 class="point__title">アプリロック</h3><p>Face ID・Touch ID・パスコードで、アプリを開くときにロックをかけられます。</p></li>
+</ul>
+</div>
+</section>
+<section id="plans" class="section" aria-labelledby="plans-title">
+<div class="section__inner">
+<div class="section__text">
+<p class="eyebrow">Free と Premium</p>
+<h2 id="plans-title" class="section__title"><span class="phrase">まずは無料で。</span><span class="phrase">たくさん記録するなら Premium。</span></h2>
+<p class="section__lead">Free プランには、記録できる数に上限があります。上限に達しても、それまでの記録はこれまでどおり見たり直したり消したりできます。</p>
+</div>
+<div class="plans">
+<article class="plan plan--free" aria-labelledby="plan-free-title">
+<div class="plan__header"><h3 id="plan-free-title" class="plan__name">Free</h3></div>
+<div class="plan__body">
+<p class="plan__summary">無料で使えるプランです。</p>
+<table class="limits"><caption>Free プランで記録できる数</caption><tbody>
+<tr><th scope="row">推し</th><td>3人</td></tr>
+<tr><th scope="row">予定</th><td>30件</td></tr>
+<tr><th scope="row">支出</th><td>50件</td></tr>
+<tr><th scope="row">思い出</th><td>50件</td></tr>
+<tr><th scope="row">グッズ</th><td>50件</td></tr>
+<tr><th scope="row">同時に進める抽選の申込</th><td>1件</td></tr>
+<tr><th scope="row">撮って記録</th><td>月3回</td></tr>
+</tbody></table>
+<p class="plan__note">当落ボードが作る予定は、予定の数に入りません。落選した申込と入金を済ませた申込は、同時に進める申込に数えません。</p>
+</div>
+</article>
+<article class="plan plan--premium" aria-labelledby="plan-premium-title">
+<div class="plan__header"><h3 id="plan-premium-title" class="plan__name">Premium</h3></div>
+<div class="plan__body">
+<p class="plan__summary">月額か年額の、自動更新のサブスクリプションです。価格は App Store でご確認ください。</p>
+<ul class="checklist">
+<li>推し・予定・支出・グッズ・思い出の数の上限がなくなる</li>
+<li>抽選の申込を何件でも同時に。申込締切と入金期限は3日前と当日の朝にもお知らせ</li>
+<li>撮って記録の回数の制限なし</li>
+<li>推し活の予算。残りをホームとウィジェットに出し、使いすぎをお知らせ</li>
+<li>推し活の振り返りと、月間のまとめ・記念日のシェアカード</li>
+<li>思い出の写真を1件10枚まで（Free は3枚）。写真をクラウドにも保存</li>
+<li>アプリアイコンを10色から選べる</li>
+<li>支出の CSV・PDF の書き出し</li>
+<li>「カウントダウン」と「今月の推し活費」のウィジェット</li>
+<li>アプリ内の広告を非表示</li>
+</ul>
+<p class="plan__note">購読は、期間が終わる24時間前までに自動更新をオフにしない限り、自動で更新されます。購読の管理と解約は、購入後に iPhone の設定から行えます。</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section id="faq" class="section" aria-labelledby="faq-title">
+<div class="section__inner">
+<div class="section__text">
+<p class="eyebrow">サポート</p>
+<h2 id="faq-title" class="section__title"><span class="phrase">よくある質問</span></h2>
+<p class="section__lead">ここにない質問は、ページのいちばん下の「お問い合わせ」から送ってください。</p>
+</div>
+<div class="faq">
+<details class="faq__item" open><summary>撮った写真は、どこかへ送られますか？</summary><div class="faq__answer"><p>読み取りは iPhone の中で行い、読み取りのために画像や文字を外へ送ることはありません。Premium では、支出に付けたレシートや思い出の写真がクラウドにも保存されます。</p></div></details>
+<details class="faq__item"><summary>無料で使えますか？</summary><div class="faq__answer"><p>無料で使えます。Free プランには記録できる数に上限があります（上の表）。上限に達しても、それまでの記録はこれまでどおり見たり直したり消したりできます。</p></div></details>
+<details class="faq__item"><summary>ログインは必要ですか？</summary><div class="faq__answer"><p>いりません。ゲストのままでも、ログインしたときと同じ機能を使えます。あとから Apple か Google でログインしても、記録は引き継がれます。</p></div></details>
+<details class="faq__item"><summary>思い出は、ほかの人に見られますか？</summary><div class="faq__answer"><p>共有を選んだ思い出だけが「みんなのレポート」に出ます。共有するかは1件ずつ選べて、写真はほかの人には見えません。</p></div></details>
+<details class="faq__item"><summary>対応している端末と言語を教えてください。</summary><div class="faq__answer"><p>iOS 17.0 以降の iPhone で使えます。言語は、日本語・英語・韓国語・中国語（簡体字・繁体字）に対応しています。</p></div></details>
+</div>
+</div>
+</section>
+<section id="start" class="section start" aria-labelledby="start-title">
+<div class="section__inner">
+<img class="start__icon" src="assets/img/common/app-icon.png" alt="" width="192" height="192" loading="lazy" decoding="async">
+<h2 id="start-title" class="start__title"><span class="phrase">次の申込から、</span><span class="phrase">記録してみてください。</span></h2>
+<p class="start__lead">Oshi Life は無料でダウンロードできます。iOS 17.0 以降の iPhone に対応しています。</p>
+<a class="button button--large" href="https://apps.apple.com/jp/app/oshi-life/id6780718555">App Store で見る</a>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="site-footer__inner">
+<nav aria-label="言語"><ul><li><a href="./" hreflang="ja" lang="ja" aria-current="page">日本語</a></li></ul></nav>
+<nav aria-label="サイトの情報"><ul><li><a href="ja/terms.html">利用規約</a></li><li><a href="ja/privacy.html">プライバシーポリシー</a></li><li><a href="https://forms.gle/GTZoGiHJLudqfbcp8" rel="noopener" target="_blank">お問い合わせ</a></li></ul></nav>
+<p class="site-footer__copyright">© 2026 Shoya Matsubara</p>
+</div>
+</footer>
 </body>
 </html>
