@@ -9,7 +9,10 @@ export function renderPhone(context, screen, alt, { isLazy = true } = {}) {
   return `<div class="phone"><img src="${context.assetPrefix}${screenPath(context.locale.code, screen)}" alt="${alt}" width="${SCREEN_IMAGE.width}" height="${SCREEN_IMAGE.height}" decoding="async"${loading}></div>`;
 }
 
-/** 動画の枠。動画が無ければ画面を並べ、あれば動画・動きを減らす人向けの静止画・一時停止のボタンを置く。 */
+/**
+ * 動画の枠。動画が無ければ画面を並べ、あれば動画・動きを減らす人向けの静止画・一時停止のボタンを置く。
+ * poster は再生前に映す最初のコマ、still は動きを減らす人に見せる代表のコマ（最初のコマが何も無い地の動画があるため分ける）。
+ */
 export function renderMediaSlot(context, slotName, slot = MEDIA_SLOTS[slotName]) {
   const { t, assetPrefix } = context;
   const isEager = slot.loading === 'eager';
@@ -23,7 +26,7 @@ export function renderMediaSlot(context, slotName, slot = MEDIA_SLOTS[slotName])
   return [
     `<figure class="${className}" data-media="${isEager ? 'autoplay' : 'lazy'}">`,
     `<video class="media-slot__video" src="${assetPrefix}${video.src}" poster="${assetPrefix}${video.poster}" width="${video.width}" height="${video.height}" muted loop playsinline${playback} aria-hidden="true"></video>`,
-    `<img class="media-slot__still" src="${assetPrefix}${video.poster}" alt="" width="${video.width}" height="${video.height}" loading="lazy" decoding="async">`,
+    `<img class="media-slot__still" src="${assetPrefix}${video.still}" alt="" width="${video.width}" height="${video.height}" loading="lazy" decoding="async">`,
     `<figcaption class="visually-hidden">${t(`${slotName}.media.description`)}</figcaption>`,
     `<button class="media-slot__toggle" type="button" hidden data-label-pause="${t('media.pause')}" data-label-play="${t('media.play')}" aria-label="${t('media.pause')}"></button>`,
     '</figure>',

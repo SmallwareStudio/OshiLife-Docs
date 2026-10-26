@@ -4182,6 +4182,11 @@ Expected: PASS（video 3 tests・real-video 1 test）、verify の終了コー�
 
 Google Chrome で `index.html` を開き、動画の地の色がページの地と継ぎ目なくつながっていること、ループの継ぎ目、一時停止のボタンの位置を目で見る。継ぎ目が見えるときは、ユーザーに付録 A の「背景の色」の指定どおりに書き出し直してもらう。
 
+**実装で変えたこと（2026-10-26）:** Claude Motion は Max プランでは使えないため、動画は `_motion/`（Remotion 4.0.539）で作った（ユーザーの指示）。
+Remotion が取ってくる描画用のブラウザがこの Mac では起動を待ったまま止まるので、`REMOTION_BROWSER_EXECUTABLE` で Playwright の chrome-headless-shell を渡す。
+ヒーローの動画は最初のコマが何も無い地なので、静止画を2枚に分けた（`poster` は最初のコマ、動きを減らす人向けの `still` は 4 秒目）。`videos.json` に `still` を足し、
+`renderMediaSlot` は `still` を使う。`tests/unit/render.test.mjs` の2つのテストは `videos.json` が空であることを前提にしていたので、`renderMediaSlot` に動画の無い枠を直接渡す形にした（確かめることは同じ）。
+
 - [ ] **Step 5: コミットする**
 
 ```bash

@@ -1,1 +1,16 @@
-{}
+{
+  "hero": {
+    "src": "assets/video/hero.mp4",
+    "poster": "assets/video/hero-poster.webp",
+    "still": "assets/video/hero-still.webp",
+    "width": 1080,
+    "height": 1080
+  },
+  "color": {
+    "src": "assets/video/color.mp4",
+    "poster": "assets/video/color-poster.webp",
+    "still": "assets/video/color-still.webp",
+    "width": 1080,
+    "height": 1080
+  }
+}

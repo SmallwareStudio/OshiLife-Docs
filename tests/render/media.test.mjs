@@ -17,7 +17,7 @@ const VIDEO_SIZE = 320;
 const VIDEO_SECONDS = 2;
 const PLAYBACK_TIMEOUT_MILLISECONDS = 5000;
 const SPACER_HEIGHT = 3000;
-const VIDEO = Object.freeze({ src: 'slot.webm', poster: 'slot-poster.png', width: VIDEO_SIZE, height: VIDEO_SIZE });
+const VIDEO = Object.freeze({ src: 'slot.webm', poster: 'slot-poster.png', still: 'slot-poster.png', width: VIDEO_SIZE, height: VIDEO_SIZE });
 
 function writeFixture() {
   mkdirSync(FIXTURE_DIRECTORY, { recursive: true });

@@ -10,7 +10,7 @@ import { renderMediaSlot } from '../../_src/lib/components.mjs';
 
 const content = JSON.parse(readFileSync(new URL('../../_src/content/ja.json', import.meta.url), 'utf8'));
 const BADGE = Object.freeze({ width: 109, height: 40 });
-const VIDEO = Object.freeze({ src: 'assets/video/hero.mp4', poster: 'assets/video/hero-poster.webp', width: 1080, height: 1080 });
+const VIDEO = Object.freeze({ src: 'assets/video/hero.mp4', poster: 'assets/video/hero-poster.webp', still: 'assets/video/hero-still.webp', width: 1080, height: 1080 });
 
 function createContext(code, locales = LOCALES) {
   return createPageContext({ locale: findLocale(code), locales, content, badge: BADGE });
@@ -43,7 +43,7 @@ test('作らない言語は、hreflang にも言語の切り替えにも出さ�
 test('直下のページと言語のフォルダのページで、素材への相対パスが変わる', () => {
   assert.match(render('ja'), /href="assets\/site\.css"/);
   assert.match(render('en'), /href="\.\.\/assets\/site\.css"/);
-  assert.match(render('zh-Hant'), /src="\.\.\/assets\/img\/zh-Hant\/home-light\.webp"/);
+  assert.match(render('zh-Hant'), /src="\.\.\/assets\/img\/zh-Hant\/record\.webp"/);
 });
 
 test('App Store へのリンクは、日本語のページだけ日本のストア', () => {
@@ -66,10 +66,10 @@ test('数値を埋め、参照の記号を残さない', () => {
   assert.match(html, new RegExp(`月${FACTS.free.scansPerMonth}回`));
 });
 
-test('動画が無いあいだは、動画の枠に各言語の画面を置く', () => {
-  const html = render('ja');
+test('動画が無いときは、動画の枠に各言語の画面を置く', () => {
+  const html = renderMediaSlot(createContext('ja'), 'hero', { theme: 'light', loading: 'eager', screens: ['home-light'], video: null });
   assert.doesNotMatch(html, /<video/);
-  assert.match(html, /<figure class="media-slot media-slot--light">/);
+  assert.match(html, /^<figure class="media-slot media-slot--light"><div class="phone"><img src="assets\/img\/ja\/home-light\.webp"/);
 });
 
 test('動画があるときは、動画・静止画・一時停止のボタンを置き、最初の画面の動画だけ自動で再生する', () => {
@@ -77,7 +77,8 @@ test('動画があるときは、動画・静止画・一時停止のボタン�
   const eager = renderMediaSlot(context, 'hero', { theme: 'light', loading: 'eager', screens: ['home-light'], video: VIDEO });
   assert.match(eager, /<figure class="media-slot media-slot--light" data-media="autoplay">/);
   assert.match(eager, /<video [^>]*muted loop playsinline autoplay preload="auto"/);
-  assert.match(eager, /<img class="media-slot__still" src="assets\/video\/hero-poster\.webp" alt=""/);
+  assert.match(eager, /<video [^>]*poster="assets\/video\/hero-poster\.webp"/);
+  assert.match(eager, /<img class="media-slot__still" src="assets\/video\/hero-still\.webp" alt=""/);
   assert.match(eager, /<button class="media-slot__toggle" type="button" hidden/);
   const lazy = renderMediaSlot(context, 'color', { theme: 'dark', loading: 'lazy', screens: ['home-mint', 'home-dark'], video: VIDEO });
   assert.match(lazy, /data-media="lazy"/);

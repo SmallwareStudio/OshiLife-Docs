@@ -29,7 +29,7 @@ node _src/build.mjs --check                     # 生成物が最新かだけを
 node _src/assets/fetch-badges.mjs               # App Store のバッジを取り直す
 node _src/assets/prepare-screens.mjs <product-page の場所>   # 画面の画像を作り直す
 node _src/og/render-og.mjs                      # 共有用の画像を描き直す
-node _src/assets/encode-video.mjs <hero|color> <MP4>        # 動画を差し込む（計画の Task 12 で作る。それまでは無い）
+node _src/assets/encode-video.mjs <hero|color> <MP4>        # 動画を差し込む（動画は _motion/ の Remotion で作る。_motion/README.md）
 ```
 
 ## 決まり

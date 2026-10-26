@@ -4,7 +4,7 @@ import VIDEOS from './videos.json' with { type: 'json' };
 /**
  * theme: 枠の地の色（動画の地の色と同じにする）。
  * loading: 'eager' は最初の画面にあって自動で再生する。'lazy' は画面に入ってから再生する。
- * screens: 動画が無いあいだに置く画面。video: videos.json にあれば { src, poster, width, height }、無ければ null。
+ * screens: 動画が無いあいだに置く画面。video: videos.json にあれば { src, poster, still, width, height }、無ければ null。
  */
 export const MEDIA_SLOTS = Object.freeze({
   hero: Object.freeze({ theme: 'light', loading: 'eager', screens: Object.freeze(['home-light']), video: VIDEOS.hero ?? null }),
