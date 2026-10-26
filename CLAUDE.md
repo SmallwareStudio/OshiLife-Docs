@@ -16,7 +16,7 @@ iPhone アプリ Oshi Life の公式サイト。GitHub Pages（main の直下を
 |---|---|---|
 | 1 | 生成し直した HTML と、コミットされた HTML が同じ（`node _src/build.mjs --check`） | 必須 |
 | 2 | `node --test`（単体テスト・生成したページと素材の静的検査・訳語） | 必須 |
-| 3 | Playwright で 5言語 × 390px・1280px を描く（はみ出し・読み込み・コントラスト・動画の枠）。撮った画像は `_tmp/shots/` | 必須 |
+| 3 | Playwright の Chromium と WebKit で 5言語 × 390px・1280px を描く（はみ出し・読み込み・コントラスト・動画の枠・キーボード）。撮った画像は `_tmp/shots/` | 必須 |
 | 4 | 外部リンク（App Store・お問い合わせ）が生きている | `VERIFY_NETWORK=1` のときだけ |
 
 「完了」と言う前に、フェーズ3で撮った画像を目で見て確かめる。
@@ -29,7 +29,7 @@ node _src/build.mjs --check                     # 生成物が最新かだけを
 node _src/assets/fetch-badges.mjs               # App Store のバッジを取り直す
 node _src/assets/prepare-screens.mjs <product-page の場所>   # 画面の画像を作り直す
 node _src/og/render-og.mjs                      # 共有用の画像を描き直す
-node _src/assets/encode-video.mjs <hero|color> <MP4>        # 動画を差し込む
+node _src/assets/encode-video.mjs <hero|color> <MP4>        # 動画を差し込む（計画の Task 12 で作る。それまでは無い）
 ```
 
 ## 決まり
