@@ -1,0 +1,9 @@
+# GitHub Pages（Jekyll）で公開しないもの。
+# _ と . で始まる名前は Jekyll が初めから公開しないので、ここには書かない。
+exclude:
+  - CLAUDE.md
+  - Scripts
+  - tests
+  - package.json
+  - package-lock.json
+  - node_modules
