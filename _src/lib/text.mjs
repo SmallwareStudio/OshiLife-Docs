@@ -1,6 +1,15 @@
 import { escapeHtml } from './escape.mjs';
 import { fillFacts } from './facts.mjs';
 
+/** 途中で改行すると読みにくい、空白を含む製品名と機能名。 */
+const UNBREAKABLE_NAMES = Object.freeze(['App Store', 'Oshi Life', 'Face ID', 'Touch ID', 'Dynamic Island']);
+const NON_BREAKING_SPACE = '&nbsp;';
+
+/** 製品名と機能名の中の空白を、改行しない空白にする（エスケープした後の文に使う）。 */
+function keepNamesTogether(escapedText) {
+  return UNBREAKABLE_NAMES.reduce((text, name) => text.replaceAll(name, name.replaceAll(' ', NON_BREAKING_SPACE)), escapedText);
+}
+
 /** 'a.b.0.c' の道筋で入れ子の値を引く。無ければ undefined。 */
 function readPath(source, dottedPath) {
   return dottedPath.split('.').reduce((node, key) => (node == null ? undefined : node[key]), source);
@@ -14,7 +23,7 @@ export function createTextLookup(content) {
   const lookup = (dottedPath) => {
     const value = readPath(content, dottedPath);
     if (typeof value !== 'string') throw new Error(`文 ${dottedPath} がありません`);
-    return escapeHtml(fillFacts(value));
+    return keepNamesTogether(escapeHtml(fillFacts(value)));
   };
   lookup.list = (dottedPath) => {
     const value = readPath(content, dottedPath);

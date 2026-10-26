@@ -87,3 +87,8 @@ test('無い文は例外にする', () => {
 test('見出しを改行の位置で折り返しの単位に分ける', () => {
   assert.equal(renderPhrases('撮ったら、\n下書き'), '<span class="phrase">撮ったら、</span><span class="phrase">下書き</span>');
 });
+
+test('製品名と機能名の中の空白では改行しない', () => {
+  const t = createTextLookup({ note: '価格は App Store で。Oshi Life と Face ID' });
+  assert.equal(t('note'), '価格は App&nbsp;Store で。Oshi&nbsp;Life と Face&nbsp;ID');
+});

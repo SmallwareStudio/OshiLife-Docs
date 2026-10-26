@@ -3302,6 +3302,9 @@ Expected: 終了コード 0
 
 - [ ] **Step 7: コミットする**
 
+**実装で変えたこと（2026-10-26 の目視から）:** site.css は上の内容から3か所を直した（ヒーローの文の列を `1.15fr` にして見出しの最大を `3.5rem` に／PC 幅では文の長い節の画面の画像を上にそろえて `position: sticky` に／1列の節の `gap` を 0 に）。
+`_src/lib/text.mjs` に、製品名と機能名（`App Store`・`Oshi Life`・`Face ID`・`Touch ID`・`Dynamic Island`）の空白を `&nbsp;` にする処理と、そのテスト（`tests/unit/core.test.mjs`）を足した。
+
 ```bash
 git add assets/site.css tests/render Scripts/verify.sh
 git commit -m "feat: LP の見た目と、描画の検査（はみ出し・読み込み・コントラスト）を足す

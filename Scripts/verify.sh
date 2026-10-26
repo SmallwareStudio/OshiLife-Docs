@@ -15,4 +15,8 @@ echo "== フェーズ2: 静的検査と単体テスト"
 # shellcheck disable=SC2046
 node --test $(collect_tests tests/unit tests/site tests/i18n)
 
+echo "== フェーズ3: 5言語 × 390px・1280px の描画（撮った画像は _tmp/shots/）"
+# shellcheck disable=SC2046
+node --test --test-concurrency=1 $(collect_tests tests/render)
+
 echo "verify: 必須のフェーズはすべて通過"
