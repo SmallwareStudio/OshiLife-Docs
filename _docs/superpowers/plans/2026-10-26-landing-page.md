@@ -3883,6 +3883,10 @@ Expected: `assets/og/` に5枚、終了コード 0（フェーズ3は 5言語 ×
 Read で、各言語の `_tmp/shots/<言語>-mobile-fold.png`・`<言語>-mobile-full.png`・`<言語>-desktop-fold.png` と `assets/og/<言語>.jpg` を開く。
 確かめること: 長くなった英語の見出し・ボタン・表がはみ出していない／韓国語が語の途中で折れていない／中国語が日本語の字形になっていない（`lang` と字体の指定）／バッジがその言語のもの／画面の画像がその言語のもの。直したら Step 4 からやり直す。
 
+**実装で変えたこと（2026-10-26）:** 英語と韓国語の見出しで、折り返しの単位どうしが空白なしでつながった（「Start withyour」「찍으면,초안까지」）。
+`LOCALES` に `phraseSeparator`（ja・zh は ''、en・ko は ' '）を足し、`renderPhrases(escapedText, separator)` で単位をつなぐようにした（テストを `tests/unit/core.test.mjs`・`render.test.mjs` に追加）。
+中国語の文では日本語の区切りの「・」（U+30FB）を使わない（かなの検査が拾う）。バッジの代替テキストは、バッジの画像の文字（ko「App Store에서 다운로드 하기」、zh-Hans「App Store 下载」、zh-Hant「App Store 下載」）にした。
+
 - [ ] **Step 7: コミットする**
 
 ```bash

@@ -37,7 +37,7 @@ function renderOgHtml(locale, t) {
 <body>
 <div>
 <span class="wordmark og__wordmark"><span class="wordmark__oshi">Oshi </span><span class="wordmark__life">Life</span></span>
-<h1 class="og__title">${renderPhrases(t('hero.headline'))}</h1>
+<h1 class="og__title">${renderPhrases(t('hero.headline'), locale.phraseSeparator)}</h1>
 </div>
 <div class="phone og__phone"><img src="${ROOT_FROM_WORK_DIRECTORY}${screenPath(locale.code, 'home-light')}" alt=""></div>
 </body>

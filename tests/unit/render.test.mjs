@@ -88,3 +88,8 @@ test('動画があるときは、動画・静止画・一時停止のボタン�
 test('よくある質問は1問目だけ開いておく', () => {
   assert.equal(render('ja').match(/<details class="faq__item" open>/g).length, 1);
 });
+
+test('見出しの単位のつなぎ方は、ページの言語に従う', () => {
+  assert.match(render('en'), /<h1 id="top-title" class="hero__title"><span class="phrase">[^<]+<\/span> <span class="phrase">/);
+  assert.match(render('ja'), /<h1 id="top-title" class="hero__title"><span class="phrase">[^<]+<\/span><span class="phrase">/);
+});

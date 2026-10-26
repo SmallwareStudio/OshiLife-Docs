@@ -34,7 +34,10 @@ export function createTextLookup(content) {
   return lookup;
 }
 
-/** 見出しを改行（\n）の位置で折り返しの単位に分ける。日本語の見出しが語の途中で折れないようにするため。 */
-export function renderPhrases(escapedText) {
-  return escapedText.split('\n').map((phrase) => `<span class="phrase">${phrase}</span>`).join('');
+/**
+ * 見出しを改行（\n）の位置で折り返しの単位に分ける。日本語の見出しが語の途中で折れないようにするため。
+ * separator は単位どうしのつなぎ（言語の phraseSeparator を渡す。英語と韓国語は空白）。
+ */
+export function renderPhrases(escapedText, separator = '') {
+  return escapedText.split('\n').map((phrase) => `<span class="phrase">${phrase}</span>`).join(separator);
 }

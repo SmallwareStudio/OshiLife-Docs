@@ -52,7 +52,7 @@ export function renderSectionHeading(context, contentKey, headingId) {
   const { t } = context;
   return [
     `<p class="eyebrow">${t(`${contentKey}.eyebrow`)}</p>`,
-    `<h2 id="${headingId}" class="section__title">${renderPhrases(t(`${contentKey}.headline`))}</h2>`,
+    `<h2 id="${headingId}" class="section__title">${renderPhrases(t(`${contentKey}.headline`), context.locale.phraseSeparator)}</h2>`,
     `<p class="section__lead">${t(`${contentKey}.lead`)}</p>`,
   ].join('\n');
 }

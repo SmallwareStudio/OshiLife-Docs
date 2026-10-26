@@ -1,0 +1,425 @@
+{
+  "source": "OshiLife の Localizable.xcstrings（アプリと widget）",
+  "terms": [
+    {
+      "ja": "撮って記録",
+      "isStrict": true,
+      "translations": {
+        "en": "Snap to Record",
+        "ko": "찍어서 기록",
+        "zh-Hans": "拍照记录",
+        "zh-Hant": "拍照記錄"
+      }
+    },
+    {
+      "ja": "みんなのレポート",
+      "isStrict": true,
+      "translations": {
+        "en": "Everyone's Reports",
+        "ko": "모두의 리포트",
+        "zh-Hans": "大家的报告",
+        "zh-Hant": "大家的報告"
+      }
+    },
+    {
+      "ja": "当落ボード",
+      "isStrict": true,
+      "translations": {
+        "en": "Lottery Board",
+        "ko": "당첨 보드",
+        "zh-Hans": "抽选看板",
+        "zh-Hant": "抽選看板"
+      }
+    },
+    {
+      "ja": "参戦のしおり",
+      "isStrict": true,
+      "translations": {
+        "en": "Event Guide",
+        "ko": "참전 안내서",
+        "zh-Hans": "参战指南",
+        "zh-Hant": "參戰指南"
+      }
+    },
+    {
+      "ja": "表示モード",
+      "isStrict": true,
+      "translations": {
+        "en": "Appearance",
+        "ko": "화면 모드",
+        "zh-Hans": "外观",
+        "zh-Hant": "外觀"
+      }
+    },
+    {
+      "ja": "支出にも記録する",
+      "isStrict": true,
+      "translations": {
+        "en": "Also record as an expense",
+        "ko": "지출에도 기록",
+        "zh-Hans": "同时记录为支出",
+        "zh-Hant": "同時記錄為支出"
+      }
+    },
+    {
+      "ja": "推し活の振り返り",
+      "isStrict": true,
+      "translations": {
+        "en": "Your oshi in review",
+        "ko": "덕질 돌아보기",
+        "zh-Hans": "应援回顾",
+        "zh-Hant": "應援回顧"
+      }
+    },
+    {
+      "ja": "申込締切",
+      "isStrict": true,
+      "translations": {
+        "en": "Entry deadline",
+        "ko": "신청 마감",
+        "zh-Hans": "申请截止",
+        "zh-Hant": "申請截止"
+      }
+    },
+    {
+      "ja": "入金期限",
+      "isStrict": true,
+      "translations": {
+        "en": "Payment deadline",
+        "ko": "입금 기한",
+        "zh-Hans": "付款期限",
+        "zh-Hant": "付款期限"
+      }
+    },
+    {
+      "ja": "申込中",
+      "isStrict": true,
+      "translations": {
+        "en": "Entering",
+        "ko": "신청 중",
+        "zh-Hans": "申请中",
+        "zh-Hant": "申請中"
+      }
+    },
+    {
+      "ja": "当落待ち",
+      "isStrict": true,
+      "translations": {
+        "en": "Awaiting results",
+        "ko": "당락 대기",
+        "zh-Hans": "等待开奖",
+        "zh-Hant": "等待開獎"
+      }
+    },
+    {
+      "ja": "入金待ち",
+      "isStrict": true,
+      "translations": {
+        "en": "Payment due",
+        "ko": "입금 대기",
+        "zh-Hans": "待付款",
+        "zh-Hant": "待付款"
+      }
+    },
+    {
+      "ja": "参戦準備OK",
+      "isStrict": true,
+      "translations": {
+        "en": "Ready to go",
+        "ko": "참전 준비 완료",
+        "zh-Hans": "准备参战",
+        "zh-Hant": "準備參戰"
+      }
+    },
+    {
+      "ja": "カウントダウン",
+      "isStrict": true,
+      "translations": {
+        "en": "Countdown",
+        "ko": "카운트다운",
+        "zh-Hans": "倒计时",
+        "zh-Hant": "倒數"
+      }
+    },
+    {
+      "ja": "今月の推し活費",
+      "isStrict": true,
+      "translations": {
+        "en": "This Month's Oshi Spending",
+        "ko": "이번 달 덕질 비용",
+        "zh-Hans": "本月应援花费",
+        "zh-Hant": "本月應援花費"
+      }
+    },
+    {
+      "ja": "当落発表",
+      "isStrict": false,
+      "translations": {
+        "en": "Results Announced",
+        "ko": "당첨 발표",
+        "zh-Hans": "中选公布",
+        "zh-Hant": "中選公布"
+      }
+    },
+    {
+      "ja": "落選",
+      "isStrict": false,
+      "translations": {
+        "en": "Not selected",
+        "ko": "낙첨",
+        "zh-Hans": "落选",
+        "zh-Hant": "落選"
+      }
+    },
+    {
+      "ja": "ホーム",
+      "isStrict": false,
+      "translations": {
+        "en": "Home",
+        "ko": "홈",
+        "zh-Hans": "首页",
+        "zh-Hant": "首頁"
+      }
+    },
+    {
+      "ja": "予定",
+      "isStrict": false,
+      "translations": {
+        "en": "Event",
+        "ko": "일정",
+        "zh-Hans": "行程",
+        "zh-Hant": "行程"
+      }
+    },
+    {
+      "ja": "記録",
+      "isStrict": false,
+      "translations": {
+        "en": "Record",
+        "ko": "기록",
+        "zh-Hans": "记录",
+        "zh-Hant": "記錄"
+      }
+    },
+    {
+      "ja": "お金",
+      "isStrict": false,
+      "translations": {
+        "en": "Money",
+        "ko": "지출",
+        "zh-Hans": "花费",
+        "zh-Hant": "花費"
+      }
+    },
+    {
+      "ja": "推し",
+      "isStrict": false,
+      "translations": {
+        "en": "Oshi",
+        "ko": "최애",
+        "zh-Hans": "本命",
+        "zh-Hant": "本命"
+      }
+    },
+    {
+      "ja": "思い出",
+      "isStrict": false,
+      "translations": {
+        "en": "Memories",
+        "ko": "추억",
+        "zh-Hans": "回忆",
+        "zh-Hant": "回憶"
+      }
+    },
+    {
+      "ja": "グッズ",
+      "isStrict": false,
+      "translations": {
+        "en": "Goods",
+        "ko": "굿즈",
+        "zh-Hans": "周边",
+        "zh-Hant": "周邊"
+      }
+    },
+    {
+      "ja": "支出",
+      "isStrict": false,
+      "translations": {
+        "en": "Expenses",
+        "ko": "지출",
+        "zh-Hans": "支出",
+        "zh-Hant": "支出"
+      }
+    },
+    {
+      "ja": "カレンダー",
+      "isStrict": false,
+      "translations": {
+        "en": "Calendar",
+        "ko": "캘린더",
+        "zh-Hans": "日历",
+        "zh-Hant": "行事曆"
+      }
+    },
+    {
+      "ja": "当落",
+      "isStrict": false,
+      "translations": {
+        "en": "Result",
+        "ko": "당락",
+        "zh-Hans": "抽选",
+        "zh-Hant": "抽選"
+      }
+    },
+    {
+      "ja": "テンプレート",
+      "isStrict": false,
+      "translations": {
+        "en": "Template",
+        "ko": "템플릿",
+        "zh-Hans": "模板",
+        "zh-Hant": "範本"
+      }
+    },
+    {
+      "ja": "定期支出",
+      "isStrict": false,
+      "translations": {
+        "en": "Recurring expense",
+        "ko": "정기 지출",
+        "zh-Hans": "定期支出",
+        "zh-Hant": "定期支出"
+      }
+    },
+    {
+      "ja": "シェアカード",
+      "isStrict": false,
+      "translations": {
+        "en": "Share Card",
+        "ko": "공유 카드",
+        "zh-Hans": "分享卡片",
+        "zh-Hant": "分享卡片"
+      }
+    },
+    {
+      "ja": "記念カード",
+      "isStrict": false,
+      "translations": {
+        "en": "Milestone Card",
+        "ko": "기념 카드",
+        "zh-Hans": "纪念卡片",
+        "zh-Hant": "紀念卡片"
+      }
+    },
+    {
+      "ja": "月間まとめ",
+      "isStrict": false,
+      "translations": {
+        "en": "Monthly Recap",
+        "ko": "월간 요약",
+        "zh-Hans": "月度总结",
+        "zh-Hant": "月度總結"
+      }
+    },
+    {
+      "ja": "記念日",
+      "isStrict": false,
+      "translations": {
+        "en": "Anniversary",
+        "ko": "기념일",
+        "zh-Hans": "纪念日",
+        "zh-Hant": "紀念日"
+      }
+    },
+    {
+      "ja": "セットリスト",
+      "isStrict": false,
+      "translations": {
+        "en": "Setlist",
+        "ko": "세트리스트",
+        "zh-Hans": "歌单",
+        "zh-Hant": "歌單"
+      }
+    },
+    {
+      "ja": "ゲスト",
+      "isStrict": false,
+      "translations": {
+        "en": "Guest",
+        "ko": "게스트",
+        "zh-Hans": "访客",
+        "zh-Hant": "訪客"
+      }
+    },
+    {
+      "ja": "ライト",
+      "isStrict": false,
+      "translations": {
+        "en": "Light",
+        "ko": "라이트",
+        "zh-Hans": "浅色",
+        "zh-Hant": "淺色"
+      }
+    },
+    {
+      "ja": "ダーク",
+      "isStrict": false,
+      "translations": {
+        "en": "Dark",
+        "ko": "다크",
+        "zh-Hans": "深色",
+        "zh-Hant": "深色"
+      }
+    },
+    {
+      "ja": "チケット",
+      "isStrict": false,
+      "translations": {
+        "en": "Ticket",
+        "ko": "티켓",
+        "zh-Hans": "门票",
+        "zh-Hant": "門票"
+      }
+    },
+    {
+      "ja": "レシート",
+      "isStrict": false,
+      "translations": {
+        "en": "Receipt",
+        "ko": "영수증",
+        "zh-Hans": "小票",
+        "zh-Hant": "收據"
+      }
+    },
+    {
+      "ja": "当選率",
+      "isStrict": false,
+      "translations": {
+        "en": "Win rate",
+        "ko": "당첨률",
+        "zh-Hans": "中选率",
+        "zh-Hant": "中選率"
+      }
+    },
+    {
+      "ja": "公演日",
+      "isStrict": false,
+      "translations": {
+        "en": "Event date",
+        "ko": "공연일",
+        "zh-Hans": "公演日",
+        "zh-Hant": "公演日"
+      }
+    },
+    {
+      "ja": "その他",
+      "isStrict": false,
+      "translations": {
+        "en": "Other",
+        "ko": "기타",
+        "zh-Hans": "其他",
+        "zh-Hant": "其他"
+      }
+    }
+  ]
+}

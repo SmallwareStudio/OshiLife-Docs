@@ -1,0 +1,300 @@
+{
+  "meta": {
+    "title": "Oshi Life｜記錄追星行程、抽選和花費的 iPhone App",
+    "description": "拍下門票或收據，就能產生行程、支出和周邊草稿的 iPhone App。抽選截止、中選公布，還有花在本命身上的錢，都能一起記錄。",
+    "ogTitle": "拍一下，草稿就完成了｜Oshi Life",
+    "ogImageAlt": "Oshi Life 的標誌和 App 的首頁"
+  },
+  "nav": {
+    "skipToContent": "跳到正文",
+    "languageLabel": "語言",
+    "appStore": "App Store",
+    "appStoreBadgeAlt": "App Store 下載"
+  },
+  "media": {
+    "pause": "暫停動畫",
+    "play": "播放動畫"
+  },
+  "hero": {
+    "eyebrow": "追星記錄 App Oshi Life {appVersion}",
+    "headline": "拍一下，\n草稿就完成了。",
+    "lead": "拍下門票或收據，就會產生行程、支出或周邊的草稿。確認內容後儲存，需要手動輸入的只有想修改的地方。申請截止、中選公布，還有花在本命身上的錢，都能用一支 iPhone 管理。",
+    "note": "拍照記錄在 Free 方案中每月最多 {free.scansPerMonth} 次（門票和收據合計）。Premium 不限次數。",
+    "requirements": "免費（含 App 內購買）· iOS {minimumIOSVersion} 或以上版本的 iPhone",
+    "media": {
+      "description": "拍下收據後，依品項分成周邊和支出的草稿，並計入首頁本月支出的動畫。",
+      "screens": [
+        "Oshi Life 的首頁。本命顏色的卡片下方，排著下一個行程、待辦事項和本月支出。"
+      ]
+    }
+  },
+  "snap": {
+    "eyebrow": "拍照記錄",
+    "headline": "收據上的品項，\n直接變成周邊和支出。",
+    "lead": "遠征回來，還得把錢包裡的收據一張張輸入。現在，這件事可以換成拍下來、再確認讀取的內容。",
+    "points": [
+      {
+        "title": "收據依品項記錄",
+        "body": "如果是買了壓克力立牌和應援毛巾的收據，每個品項會各建立一筆周邊和一筆支出。稅金等其餘金額歸入「其他」支出；讀不出品項時，就把合計記為一筆支出。"
+      },
+      {
+        "title": "門票變成行程",
+        "body": "讀取演出名稱、日期時間、場館、座位和票價，產生行程的草稿。讀到票價時，儲存行程後還能把票價記為支出。"
+      },
+      {
+        "title": "電子票截圖也可以",
+        "body": "除了拍照，也可以從照片中選擇。讀錯類型時（把門票當成收據，或反過來），可以用同一張圖片改成另一種類型重新讀取。"
+      }
+    ],
+    "privacy": "讀取在 iPhone 內完成，不會為了讀取而把圖片或文字傳到外部。",
+    "quota": "Free 方案每月最多 {free.scansPerMonth} 次（門票和收據合計）。Premium 不限次數。",
+    "imageAlt": "記錄頁面。最上方是「拍照記錄」，下面排著記錄的種類。",
+    "caption": "在任何頁面，都能從中間的「記錄」（＋）打開。"
+  },
+  "color": {
+    "eyebrow": "本命的顏色和深色模式",
+    "headline": "切換本命，\nApp 的顏色也跟著變。",
+    "lead": "按鈕、標籤和卡片的強調色，會變成目前所選本命的顏色。本命是粉紅色就變成粉紅色，是薄荷色就變成薄荷色。",
+    "points": [
+      {
+        "title": "可以為每位本命設定顏色",
+        "body": "為每位本命選好顏色後，切換到那位本命時，整個 App 的顏色也會一起改變。"
+      },
+      {
+        "title": "也支援深色模式",
+        "body": "預設跟隨 iPhone 的設定切換。也可以在設定的「外觀」中固定為淺色或深色。"
+      }
+    ],
+    "media": {
+      "description": "首頁的強調色依序變成各個本命顏色，最後切換為深色模式的動畫。",
+      "screens": [
+        "選擇薄荷色本命時的首頁。",
+        "深色模式下的首頁。"
+      ]
+    }
+  },
+  "schedule": {
+    "eyebrow": "行程和抽選",
+    "headline": "申請截止，\n不用再靠截圖記住。",
+    "lead": "報名抽選後，把這筆申請登記到 Oshi Life。申請截止、中選公布和付款期限會排進行程，快到時會收到提醒。",
+    "timelineLabel": "登記抽選申請後的流程",
+    "timeline": [
+      {
+        "title": "登記申請",
+        "body": "輸入報名的演出，以及截止和公布的日期時間。"
+      },
+      {
+        "title": "排進 {lotteryDerivedEventCount} 個行程",
+        "body": "申請截止、中選公布和付款期限會自動加入行事曆。"
+      },
+      {
+        "title": "中選後加入公演日",
+        "body": "記錄中選並輸入公演日後，會加入演出的行程。"
+      },
+      {
+        "title": "從結果看中選率",
+        "body": "持續記錄抽選結果，就能看到目前為止的中選率。"
+      }
+    ],
+    "points": [
+      {
+        "title": "截止和付款，前一天提醒",
+        "body": "申請截止和付款期限會在前一天提醒，中選公布則在公布時提醒。"
+      },
+      {
+        "title": "{premiumExtraReminderDays} 天前和當天早上也提醒",
+        "tag": "Premium",
+        "body": "除了前一天，申請截止和付款期限還會在 {premiumExtraReminderDays} 天前和當天早上提醒。"
+      },
+      {
+        "title": "抽選看板",
+        "body": "用「行程」標籤頂部的［行事曆｜抽選］切換到抽選，申請會依「申請中」「等待開獎」「待付款」「準備參戰」「落選」分開排列。"
+      },
+      {
+        "title": "行程共 {eventKindCount} 種",
+        "body": "演唱會、發售、直播、電視、廣播、YouTube、周邊等。場館和本命的名字都能自由輸入。"
+      }
+    ],
+    "imageAlt": "「行程」標籤的行事曆。上方有［行事曆｜抽選］的切換，以及依本命篩選的按鈕。",
+    "caption": "本命有 {oshiFilterMinimumCount} 位或以上時，可以依本命篩選。"
+  },
+  "money": {
+    "eyebrow": "花費",
+    "headline": "這個月花了多少，\n不用拿計算機就知道。",
+    "lead": "門票、周邊、交通費、住宿、餐飲。記錄的支出會依本命和分類統計，在「花費」標籤裡可以按月查看。",
+    "points": [
+      {
+        "title": "本月狀況一頁看完",
+        "body": "合計、與上個月的差額、明細和列表，都集中在「花費」標籤的一個頁面裡。"
+      },
+      {
+        "title": "少打字",
+        "body": "常用的支出可以從範本輸入。把訂閱費和會費設成定期支出，到期的部分會自動加入。"
+      },
+      {
+        "title": "周邊和支出一起記錄",
+        "body": "登錄周邊時打開「同時記錄為支出」，支出記錄也會一起建立。"
+      },
+      {
+        "title": "依本命查看",
+        "body": "本命有 {oshiFilterMinimumCount} 位或以上時，明細和列表可以依本命篩選。"
+      },
+      {
+        "title": "預算",
+        "tag": "Premium",
+        "body": "設定每月預算後，剩餘金額會顯示在首頁和小工具上。達到預算的 {budgetWarningPercent}% 和超出時會提醒你。"
+      }
+    ],
+    "imageAlt": "「花費」標籤。本月合計下方是明細和支出列表。",
+    "caption": "支出的 CSV、PDF 匯出是 Premium 功能。"
+  },
+  "oshi": {
+    "eyebrow": "本命",
+    "headline": "在回家的電車上，\n寫下今天的歌單。",
+    "lead": "回憶可以附上照片和歌單留存。本命頁面集中了資料、紀念日、周邊和回憶。",
+    "points": [
+      {
+        "title": "要不要分享，一篇篇決定",
+        "body": "選擇分享的回憶，標題、內文和歌單會出現在「大家的報告」，其他人也能看到。照片不會分享出去。"
+      },
+      {
+        "title": "不錯過重要的日子",
+        "body": "開始推本命以來的天數、生日、紀念日。到了這些重要的日子，首頁會為你慶祝，當天還能免費製作紀念卡片。生日和紀念日當天早上 {anniversaryNotificationHour} 點會收到提醒。"
+      },
+      {
+        "title": "把一年做成卡片",
+        "body": "年度總結可以免費做成分享卡片。"
+      }
+    ],
+    "imageAlt": "本命頁面。資料下方排著紀念日、周邊和回憶。",
+    "caption": "「應援回顧」以及月度總結、紀念日的分享卡片是 Premium 功能。"
+  },
+  "more": {
+    "eyebrow": "其他",
+    "headline": "還能做的事",
+    "lead": "也能從主畫面、鎖定畫面和 Siri 使用。",
+    "points": [
+      {
+        "title": "小工具",
+        "body": "「本命」小工具會顯示本命的圖片、推了多少天，以及距離下一個行程的天數。「倒數」和「本月應援花費」小工具是 Premium 功能。"
+      },
+      {
+        "title": "演出當天的鎖定畫面",
+        "body": "開演前 {liveActivityLeadHours} 小時起，鎖定畫面會顯示距離開演的倒數。支援的 iPhone 還會顯示在動態島中。"
+      },
+      {
+        "title": "參戰指南",
+        "body": "把日期時間、場館、交通和住宿、攜帶物品整理成一張圖片，傳給同行的人。金額預設不會放進圖片。"
+      },
+      {
+        "title": "Siri 和捷徑",
+        "body": "可以用 Siri 或捷徑新增行程、查看下一個行程和本月支出。"
+      },
+      {
+        "title": "不一定要登入",
+        "body": "以訪客身分也能使用和登入後相同的功能。之後用 Apple 或 Google 登入，記錄也會保留。"
+      },
+      {
+        "title": "App 鎖定",
+        "body": "可以設定在打開 App 時，用 Face ID、Touch ID 或密碼解鎖。"
+      }
+    ]
+  },
+  "plans": {
+    "eyebrow": "Free 和 Premium",
+    "headline": "先免費用起來。\n想記錄更多，就選 Premium。",
+    "lead": "Free 方案可記錄的數量有上限。達到上限後，已有的記錄仍然可以照常檢視、修改和刪除。",
+    "free": {
+      "name": "Free",
+      "summary": "可以免費使用的方案。",
+      "limitsCaption": "Free 方案可記錄的數量",
+      "note": "抽選看板建立的行程不計入行程數。落選的申請和已付款的申請，不算作同時進行的申請。"
+    },
+    "limits": [
+      {
+        "label": "本命",
+        "value": "{free.oshi} 位"
+      },
+      {
+        "label": "行程",
+        "value": "{free.events} 筆"
+      },
+      {
+        "label": "支出",
+        "value": "{free.expenses} 筆"
+      },
+      {
+        "label": "回憶",
+        "value": "{free.memories} 篇"
+      },
+      {
+        "label": "周邊",
+        "value": "{free.goods} 件"
+      },
+      {
+        "label": "同時進行的抽選申請",
+        "value": "{free.activeLotteryEntries} 筆"
+      },
+      {
+        "label": "拍照記錄",
+        "value": "每月 {free.scansPerMonth} 次"
+      }
+    ],
+    "premium": {
+      "name": "Premium",
+      "summary": "按月或按年自動續訂的訂閱。價格請在 App Store 確認。",
+      "note": "除非在本期結束前至少 {subscriptionCancelLeadHours} 小時關閉自動續訂，否則訂閱會自動續訂。購買後，可以在 iPhone 的設定中管理或取消訂閱。"
+    },
+    "premiumItems": [
+      "本命、行程、支出、周邊、回憶的數量沒有上限",
+      "可同時進行任意數量的抽選申請。申請截止和付款期限在 {premiumExtraReminderDays} 天前和當天早上也會提醒",
+      "拍照記錄不限次數",
+      "應援預算。剩餘金額顯示在首頁和小工具上，超支時提醒",
+      "「應援回顧」以及月度總結、紀念日的分享卡片",
+      "每篇回憶最多 {photosPerMemory.premium} 張照片（Free 為 {photosPerMemory.free} 張），照片也會儲存到雲端",
+      "可從 {alternateIconCount} 種顏色中選擇 App 圖示",
+      "支出的 CSV、PDF 匯出",
+      "「倒數」和「本月應援花費」小工具",
+      "隱藏 App 內廣告"
+    ]
+  },
+  "faq": {
+    "eyebrow": "支援",
+    "headline": "常見問題",
+    "lead": "如果這裡找不到你的問題，請透過頁面最下方的「聯絡我們」詢問。",
+    "items": [
+      {
+        "question": "拍的照片會被傳送到別的地方嗎？",
+        "answer": "讀取在 iPhone 內完成，不會為了讀取而把圖片或文字傳到外部。使用 Premium 時，附在支出上的收據和回憶裡的照片也會儲存到雲端。"
+      },
+      {
+        "question": "可以免費使用嗎？",
+        "answer": "可以免費使用。Free 方案可記錄的數量有上限（見上表）。達到上限後，已有的記錄仍然可以照常檢視、修改和刪除。"
+      },
+      {
+        "question": "需要登入嗎？",
+        "answer": "不需要。以訪客身分也能使用和登入後相同的功能。之後用 Apple 或 Google 登入，記錄也會保留。"
+      },
+      {
+        "question": "回憶會被其他人看到嗎？",
+        "answer": "只有選擇分享的回憶會出現在「大家的報告」中。可以一篇篇決定是否分享，照片不會被其他人看到。"
+      },
+      {
+        "question": "支援哪些裝置和語言？",
+        "answer": "支援 iOS {minimumIOSVersion} 或以上版本的 iPhone。語言支援日文、英文、韓文和中文（簡體、繁體）。"
+      }
+    ]
+  },
+  "start": {
+    "headline": "從下一次抽選申請開始，\n試著記錄吧。",
+    "lead": "Oshi Life 可以免費下載，支援 iOS {minimumIOSVersion} 或以上版本的 iPhone。",
+    "cta": "在 App Store 查看"
+  },
+  "footer": {
+    "linksLabel": "網站資訊",
+    "terms": "使用條款",
+    "privacy": "隱私權政策",
+    "contact": "聯絡我們",
+    "copyright": "© {copyrightYear} Shoya Matsubara"
+  }
+}

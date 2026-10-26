@@ -13,13 +13,14 @@ const BADGE_QUERY = '?size=250x83';
 /**
  * directory: このページの置き場（直下は ''）。legalDirectory: 規約とプライバシーポリシーの置き場。
  * badgeLocale: Apple のバッジの言語。screenshotFolder: 画面の画像の元のフォルダの名前。
+ * phraseSeparator: 見出しの折り返しの単位どうしのつなぎ（語を空白で区切る言語は空白、日本語と中国語は無し）。
  */
 export const LOCALES = Object.freeze([
-  { code: 'ja', label: '日本語', directory: '', legalDirectory: 'ja/', ogLocale: 'ja_JP', appStoreUrl: APP_STORE_URL_JAPAN, badgeLocale: 'ja-jp', screenshotFolder: 'ja' },
-  { code: 'en', label: 'English', directory: 'en/', legalDirectory: 'en/', ogLocale: 'en_US', appStoreUrl: APP_STORE_URL_ANY_REGION, badgeLocale: 'en-us', screenshotFolder: 'en-US' },
-  { code: 'ko', label: '한국어', directory: 'ko/', legalDirectory: 'ko/', ogLocale: 'ko_KR', appStoreUrl: APP_STORE_URL_ANY_REGION, badgeLocale: 'ko-kr', screenshotFolder: 'ko' },
-  { code: 'zh-Hans', label: '简体中文', directory: 'zh-Hans/', legalDirectory: 'zh-Hans/', ogLocale: 'zh_CN', appStoreUrl: APP_STORE_URL_ANY_REGION, badgeLocale: 'zh-cn', screenshotFolder: 'zh-Hans' },
-  { code: 'zh-Hant', label: '繁體中文', directory: 'zh-Hant/', legalDirectory: 'zh-Hant/', ogLocale: 'zh_TW', appStoreUrl: APP_STORE_URL_ANY_REGION, badgeLocale: 'zh-tw', screenshotFolder: 'zh-Hant' },
+  { code: 'ja', label: '日本語', directory: '', legalDirectory: 'ja/', ogLocale: 'ja_JP', appStoreUrl: APP_STORE_URL_JAPAN, badgeLocale: 'ja-jp', screenshotFolder: 'ja', phraseSeparator: '' },
+  { code: 'en', label: 'English', directory: 'en/', legalDirectory: 'en/', ogLocale: 'en_US', appStoreUrl: APP_STORE_URL_ANY_REGION, badgeLocale: 'en-us', screenshotFolder: 'en-US', phraseSeparator: ' ' },
+  { code: 'ko', label: '한국어', directory: 'ko/', legalDirectory: 'ko/', ogLocale: 'ko_KR', appStoreUrl: APP_STORE_URL_ANY_REGION, badgeLocale: 'ko-kr', screenshotFolder: 'ko', phraseSeparator: ' ' },
+  { code: 'zh-Hans', label: '简体中文', directory: 'zh-Hans/', legalDirectory: 'zh-Hans/', ogLocale: 'zh_CN', appStoreUrl: APP_STORE_URL_ANY_REGION, badgeLocale: 'zh-cn', screenshotFolder: 'zh-Hans', phraseSeparator: '' },
+  { code: 'zh-Hant', label: '繁體中文', directory: 'zh-Hant/', legalDirectory: 'zh-Hant/', ogLocale: 'zh_TW', appStoreUrl: APP_STORE_URL_ANY_REGION, badgeLocale: 'zh-tw', screenshotFolder: 'zh-Hant', phraseSeparator: '' },
 ].map((locale) => Object.freeze(locale)));
 
 export function findLocale(code) {

@@ -23,7 +23,7 @@ export function renderHero(context) {
   const { t } = context;
   const text = renderTextColumn(
     `<p class="eyebrow">${t('hero.eyebrow')}</p>`,
-    `<h1 id="top-title" class="hero__title">${renderPhrases(t('hero.headline'))}</h1>`,
+    `<h1 id="top-title" class="hero__title">${renderPhrases(t('hero.headline'), context.locale.phraseSeparator)}</h1>`,
     `<p class="hero__lead">${t('hero.lead')}</p>`,
     `<div class="hero__actions">${renderBadge(context)}</div>`,
     `<p class="hero__note">${t('hero.note')}</p>`,
@@ -122,7 +122,7 @@ export function renderStart(context) {
   const { t, locale } = context;
   return wrapSection('start', { sectionClass: 'start' }, [
     renderAppIcon(context),
-    `<h2 id="start-title" class="start__title">${renderPhrases(t('start.headline'))}</h2>`,
+    `<h2 id="start-title" class="start__title">${renderPhrases(t('start.headline'), locale.phraseSeparator)}</h2>`,
     `<p class="start__lead">${t('start.lead')}</p>`,
     `<a class="button button--large" href="${locale.appStoreUrl}">${t('start.cta')}</a>`,
   ].join('\n'));

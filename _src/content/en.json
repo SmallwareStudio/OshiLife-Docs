@@ -1,0 +1,300 @@
+{
+  "meta": {
+    "title": "Oshi Life | iPhone app for oshi events, lottery results and spending",
+    "description": "An iPhone app that turns photos of tickets and receipts into drafts of events, expenses and goods. Keep track of lottery deadlines, results and what you spend on your oshi.",
+    "ogTitle": "Snap a photo, and the draft is ready | Oshi Life",
+    "ogImageAlt": "The Oshi Life logo and the app's Home screen"
+  },
+  "nav": {
+    "skipToContent": "Skip to content",
+    "languageLabel": "Language",
+    "appStore": "App Store",
+    "appStoreBadgeAlt": "Download on the App Store"
+  },
+  "media": {
+    "pause": "Pause animation",
+    "play": "Play animation"
+  },
+  "hero": {
+    "eyebrow": "An app for recording your oshi life · Oshi Life {appVersion}",
+    "headline": "Snap a photo,\nand the draft is ready.",
+    "lead": "Take a photo of a ticket or receipt, and Oshi Life drafts the event, expense or goods for you. Check it and save, and the only typing left is whatever you want to fix. Manage entry deadlines, lottery results and what you spend on your oshi, all from your iPhone.",
+    "note": "On the Free plan, you can use Snap to Record {free.scansPerMonth} times a month (tickets and receipts combined). Premium has no limit.",
+    "requirements": "Free (with in-app purchases) · iPhone with iOS {minimumIOSVersion} or later",
+    "media": {
+      "description": "Animation: a receipt is photographed, split into a goods draft and an expense draft for each item, and added to this month's spending on Home.",
+      "screens": [
+        "The Oshi Life Home screen. Below a card in your oshi's color are your next events, to-dos and this month's spending."
+      ]
+    }
+  },
+  "snap": {
+    "eyebrow": "Snap to Record",
+    "headline": "Every item on the receipt\nbecomes goods and an expense.",
+    "lead": "You're back from a trip to see your oshi, typing in the receipts from your wallet one by one. Oshi Life turns that chore into snapping a photo and checking what it picked up.",
+    "points": [
+      {
+        "title": "Receipts, item by item",
+        "body": "A receipt for an acrylic stand and a concert towel gives you one goods entry and one expense for each item. Tax and anything left over go into one expense under Other, and if the items can't be read, the total becomes one expense."
+      },
+      {
+        "title": "Tickets become events",
+        "body": "It reads the title, date and time, venue, seat and price, and drafts an event. If the price was read, you can record the ticket price as an expense right after saving the event."
+      },
+      {
+        "title": "E-ticket screenshots too",
+        "body": "Besides taking a photo, you can choose one from your library. If a ticket is read as a receipt or the other way around, you can read the same image again as the other kind."
+      }
+    ],
+    "privacy": "Scanning happens on your iPhone. Images and text never leave your iPhone for scanning.",
+    "quota": "The Free plan includes {free.scansPerMonth} scans a month (tickets and receipts combined). Premium has no limit.",
+    "imageAlt": "The Record screen, with Snap to Record at the top and the kinds of records below it.",
+    "caption": "Open it from any screen with the Record (+) button in the middle of the tab bar."
+  },
+  "color": {
+    "eyebrow": "Your oshi's color and Dark Mode",
+    "headline": "Switch oshi,\nand the app's color switches too.",
+    "lead": "Buttons, tabs and card accents take on the color of the oshi you've selected. If your oshi's color is pink, the app goes pink; if it's mint, it goes mint.",
+    "points": [
+      {
+        "title": "A color for each oshi",
+        "body": "Choose a color for each oshi, and the whole app changes color when you switch to that oshi."
+      },
+      {
+        "title": "Dark Mode too",
+        "body": "By default it follows your iPhone's setting. You can also set it to always Light or always Dark under Appearance in the app's Settings."
+      }
+    ],
+    "media": {
+      "description": "Animation: the accent color on Home changes through the oshi colors one by one, then switches to Dark Mode.",
+      "screens": [
+        "Home with a mint oshi selected.",
+        "Home in Dark Mode."
+      ]
+    }
+  },
+  "schedule": {
+    "eyebrow": "Events and lotteries",
+    "headline": "No more screenshots\nto remember entry deadlines.",
+    "lead": "When you enter a ticket lottery, add the entry to Oshi Life. The entry deadline, results announcement and payment deadline show up in your events, and a reminder arrives as each one gets close.",
+    "timelineLabel": "What happens after you add a lottery entry",
+    "timeline": [
+      {
+        "title": "Add the entry",
+        "body": "Fill in the show you applied for and the dates and times of the deadline and the results announcement."
+      },
+      {
+        "title": "{lotteryDerivedEventCount} events appear",
+        "body": "The entry deadline, results announcement and payment deadline are added to your calendar automatically."
+      },
+      {
+        "title": "Win, and the show date is added",
+        "body": "Record a win and enter the event date, and the show is added as an event."
+      },
+      {
+        "title": "See your win rate",
+        "body": "Record each result, and you can see your win rate so far."
+      }
+    ],
+    "points": [
+      {
+        "title": "Deadline reminders the day before",
+        "body": "You're reminded of the entry deadline and the payment deadline the day before, and of the results at the time they're announced."
+      },
+      {
+        "title": "{premiumExtraReminderDays} days before and on the day",
+        "tag": "Premium",
+        "body": "On top of the day-before reminder, you're also reminded of the entry deadline and the payment deadline {premiumExtraReminderDays} days before and on the morning of each deadline."
+      },
+      {
+        "title": "Lottery Board",
+        "body": "Switch to Result with the [Calendar | Result] toggle at the top of the Event tab, and your entries are sorted into \"Entering\", \"Awaiting results\", \"Payment due\", \"Ready to go\" and \"Not selected\"."
+      },
+      {
+        "title": "{eventKindCount} kinds of events",
+        "body": "Live shows, releases, streams, TV, radio, YouTube, goods and more. Type in any venue or oshi name you like."
+      }
+    ],
+    "imageAlt": "The calendar in the Event tab, with the [Calendar | Result] switch and buttons for filtering by oshi at the top.",
+    "caption": "With {oshiFilterMinimumCount} or more oshi, you can filter by oshi."
+  },
+  "money": {
+    "eyebrow": "Money",
+    "headline": "See what you spent this month\nwithout a calculator.",
+    "lead": "Tickets, goods, travel, hotels, food. Your expenses are totaled by oshi and by category, and you can look back month by month in the Money tab.",
+    "points": [
+      {
+        "title": "This month on one screen",
+        "body": "The Money tab puts the total, the change from last month, the breakdown and the list on one screen."
+      },
+      {
+        "title": "Less typing",
+        "body": "Add expenses you log often from a template. Set up subscriptions and membership fees as recurring expenses, and each payment is added automatically when it's due."
+      },
+      {
+        "title": "Goods and expenses together",
+        "body": "Turn on \"Also record as an expense\" when you add goods, and the expense is recorded at the same time."
+      },
+      {
+        "title": "View by oshi",
+        "body": "With {oshiFilterMinimumCount} or more oshi, you can filter the breakdown and the list by oshi."
+      },
+      {
+        "title": "Budget",
+        "tag": "Premium",
+        "body": "Set a monthly budget, and what's left shows on Home and in widgets. You're notified when you reach {budgetWarningPercent}% of it and when you go over."
+      }
+    ],
+    "imageAlt": "The Money tab, with this month's total and, below it, the breakdown and the list of expenses.",
+    "caption": "Exporting expenses as CSV or PDF is a Premium feature."
+  },
+  "oshi": {
+    "eyebrow": "Oshi",
+    "headline": "On the train home,\nwrite down tonight's setlist.",
+    "lead": "Save each memory with photos and the setlist. Your oshi's page brings together their profile, anniversaries, goods and memories.",
+    "points": [
+      {
+        "title": "You choose what to share",
+        "body": "For a memory you choose to share, the title, text and setlist can be read by others in Everyone's Reports. Photos are not shared."
+      },
+      {
+        "title": "Milestone days, celebrated",
+        "body": "Days since you started supporting your oshi, birthdays, anniversaries. On a milestone day, Home celebrates it, and you can make a Milestone Card for free that day. You also get a notification at {anniversaryNotificationHour} a.m. on birthdays and anniversaries."
+      },
+      {
+        "title": "Your year on a card",
+        "body": "Your yearly recap can be turned into a share card for free."
+      }
+    ],
+    "imageAlt": "Your oshi's page, with anniversaries, goods and memories below the profile.",
+    "caption": "\"Your oshi in review\" and the share cards for monthly recaps and anniversaries are Premium features."
+  },
+  "more": {
+    "eyebrow": "More",
+    "headline": "More you can do",
+    "lead": "You can also use it from your Home Screen, your Lock Screen and Siri.",
+    "points": [
+      {
+        "title": "Widgets",
+        "body": "The \"Oshi\" widget shows your oshi's photo, how many days you've supported them and the days until your next event. The \"Countdown\" and \"This Month's Oshi Spending\" widgets are Premium."
+      },
+      {
+        "title": "Lock Screen on show day",
+        "body": "From {liveActivityLeadHours} hours before the show starts, a countdown to showtime appears on your Lock Screen, and in the Dynamic Island on iPhones that have one."
+      },
+      {
+        "title": "Event Guide",
+        "body": "Put the date and time, venue, travel and hotel, and what to bring into one image and send it to the friends you're going with. By default, amounts are left out of the image."
+      },
+      {
+        "title": "Siri and Shortcuts",
+        "body": "Add an event, check your next event or see this month's spending with Siri or Shortcuts."
+      },
+      {
+        "title": "Sign-in is optional",
+        "body": "As a guest, you can use the same features as when you're signed in. Sign in later with Apple or Google, and your records come with you."
+      },
+      {
+        "title": "App lock",
+        "body": "Require Face ID, Touch ID or a passcode to open the app."
+      }
+    ]
+  },
+  "plans": {
+    "eyebrow": "Free and Premium",
+    "headline": "Start for free.\nGo Premium to record more.",
+    "lead": "The Free plan has limits on how much you can record. If you reach a limit, you can still view, edit and delete everything you've recorded.",
+    "free": {
+      "name": "Free",
+      "summary": "Free to use, with limits on how much you can record.",
+      "limitsCaption": "How much you can record on the Free plan",
+      "note": "Events created by the Lottery Board don't count toward the event limit. Entries that weren't selected and entries you've already paid for don't count as active entries."
+    },
+    "limits": [
+      {
+        "label": "Oshi",
+        "value": "{free.oshi}"
+      },
+      {
+        "label": "Events",
+        "value": "{free.events}"
+      },
+      {
+        "label": "Expenses",
+        "value": "{free.expenses}"
+      },
+      {
+        "label": "Memories",
+        "value": "{free.memories}"
+      },
+      {
+        "label": "Goods",
+        "value": "{free.goods}"
+      },
+      {
+        "label": "Active lottery entries",
+        "value": "{free.activeLotteryEntries}"
+      },
+      {
+        "label": "Snap to Record",
+        "value": "{free.scansPerMonth} a month"
+      }
+    ],
+    "premium": {
+      "name": "Premium",
+      "summary": "An auto-renewing subscription, monthly or yearly. Please check the App Store for prices.",
+      "note": "Subscriptions renew automatically unless auto-renew is turned off at least {subscriptionCancelLeadHours} hours before the end of the period. You can manage or cancel your subscription in your iPhone's Settings after purchase."
+    },
+    "premiumItems": [
+      "No limits on oshi, events, expenses, goods or memories",
+      "Any number of lottery entries at once, with entry deadline and payment deadline reminders {premiumExtraReminderDays} days before and on the morning of each deadline, too",
+      "No limit on Snap to Record",
+      "Oshi budgets, with what's left on Home and in widgets, and alerts when you overspend",
+      "\"Your oshi in review\", plus monthly recap and anniversary share cards",
+      "Up to {photosPerMemory.premium} photos per memory (Free: {photosPerMemory.free}), with photos also saved to the cloud",
+      "Choose your app icon from {alternateIconCount} colors",
+      "Export expenses as CSV or PDF",
+      "The \"Countdown\" and \"This Month's Oshi Spending\" widgets",
+      "No ads in the app"
+    ]
+  },
+  "faq": {
+    "eyebrow": "Support",
+    "headline": "Frequently asked questions",
+    "lead": "If your question isn't here, send it from \"Contact\" at the very bottom of the page.",
+    "items": [
+      {
+        "question": "Are my photos sent anywhere?",
+        "answer": "Scanning happens on your iPhone, and images and text never leave it for scanning. With Premium, receipts attached to expenses and photos in memories are also saved to the cloud."
+      },
+      {
+        "question": "Is it free?",
+        "answer": "Yes. The Free plan has limits on how much you can record (see the table above). If you reach a limit, you can still view, edit and delete everything you've recorded."
+      },
+      {
+        "question": "Do I need to sign in?",
+        "answer": "No. As a guest, you can use the same features as when you're signed in. Sign in later with Apple or Google, and your records come with you."
+      },
+      {
+        "question": "Can other people see my memories?",
+        "answer": "Only memories you choose to share appear in Everyone's Reports. You decide one memory at a time, and photos are never shown to others."
+      },
+      {
+        "question": "Which devices and languages are supported?",
+        "answer": "iPhone with iOS {minimumIOSVersion} or later. The app is available in Japanese, English, Korean and Chinese (Simplified and Traditional)."
+      }
+    ]
+  },
+  "start": {
+    "headline": "Start with\nyour next lottery entry.",
+    "lead": "Oshi Life is free to download and works on iPhone with iOS {minimumIOSVersion} or later.",
+    "cta": "View on the App Store"
+  },
+  "footer": {
+    "linksLabel": "Site information",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "copyright": "© {copyrightYear} Shoya Matsubara"
+  }
+}

@@ -92,3 +92,11 @@ test('製品名と機能名の中の空白では改行しない', () => {
   const t = createTextLookup({ note: '価格は App Store で。Oshi Life と Face ID' });
   assert.equal(t('note'), '価格は App&nbsp;Store で。Oshi&nbsp;Life と Face&nbsp;ID');
 });
+
+test('語を空白で区切る言語では、見出しの単位どうしを空白でつなぐ', () => {
+  assert.equal(renderPhrases('Snap a photo,\nand the draft', ' '), '<span class="phrase">Snap a photo,</span> <span class="phrase">and the draft</span>');
+  assert.equal(findLocale('en').phraseSeparator, ' ');
+  assert.equal(findLocale('ko').phraseSeparator, ' ');
+  assert.equal(findLocale('ja').phraseSeparator, '');
+  assert.equal(findLocale('zh-Hans').phraseSeparator, '');
+});
